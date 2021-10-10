@@ -75,11 +75,11 @@ module.exports = {
             filename: '[name].css',
         }),
 
-        // new CopyPlugin({
-        //     patterns: [
-        //         { from: "src/files", to: "files" },
-        //     ],
-        // }),
+        new CopyPlugin({
+            patterns: [
+                { from: "src/img/srcImg", to: "img" },
+            ],
+        }),
     ],
 
 };

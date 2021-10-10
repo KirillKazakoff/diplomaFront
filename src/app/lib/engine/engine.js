@@ -30,7 +30,7 @@ export default function engine(node) {
 
     if (attrs) {
         Object.entries(attrs).forEach(([key, value]) => {
-            if (key === 'novalidate' || key === 'required') {
+            if (key === 'novalidate' || key === 'required' || key === 'controls') {
                 htmlAttrs += `${key} `;
             } else {
                 htmlAttrs += `${key}="${value}"`;

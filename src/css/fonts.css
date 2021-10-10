@@ -1,0 +1,24 @@
+@font-face {
+    font-family: 'HeaderFont';
+    src: url('./fonts/BELWEB.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'InputFont';
+    src: url('./fonts/JustDieAlready.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'OptionFont';
+    src: url('./fonts/DeadBitch-Regular.ttf') format('truetype');
+}
+
+body {
+    font-family: 'HeaderFont';
+} 
+
+input {
+    color: rgb(185, 44, 23);
+    font-family: 'HeaderFont';
+    font-size: 35px;
+}

@@ -1,0 +1,41 @@
+.chat-footer {
+    background-color: gray;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    padding: 10px 50px 10px 50px;
+}
+
+.footer-badge {
+    width: 40px;
+    height: 40px;
+    background-size: cover;
+}
+
+.input__message {
+    position: static;
+    padding: 10px 15px;
+    border: 5px groove solid;
+    border-radius: 10px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.input__message::placeholder {
+    color: black;
+    font-family: 'OptionFont';
+}
+
+.record-input {
+    position: absolute;
+    top: -1000px;
+}
+
+.footer-badge__emoji {
+    background-image: url('./img/emoji-badge.png');
+}
+
+.footer-badge__record {
+    background-image: url('./img/record-badge.png');
+}

@@ -16,7 +16,7 @@ h1, h2, h3, h4, aside, select, textarea, input {
   /* overflow: hidden; */
 }
 
-input, button {
+input, button, video, audio {
     font-size: inherit;
     background-color: transparent;
     display: block;
