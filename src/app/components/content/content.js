@@ -11,8 +11,13 @@ export default class Content {
     }
 
     addMes(htmlNote) {
-        console.log('succe');
         this.messages.insertAdjacentHTML('afterbegin', htmlNote);
+        this.revokeURL(this.messages.firstElementChild);
+    }
+
+    revokeURL(message) {
+        const node = message.querySelector('.node');
+        if (node.src) URL.revokeObjectURL(node.src);
     }
 }
 

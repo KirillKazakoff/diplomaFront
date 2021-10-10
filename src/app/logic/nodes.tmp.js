@@ -3,18 +3,18 @@ import engine from '../lib/engine/engine';
 
 export const imgT = () => ({
     block: 'img',
-    cls: 'mes-img',
+    cls: 'node mes-img',
 });
 
 export const txtT = (txt) => ({
     block: 'div',
-    cls: 'mes-txt',
+    cls: 'node mes-txt',
     content: txt,
 });
 
 export const videoT = () => ({
     block: 'video',
-    cls: 'mes-video',
+    cls: 'node mes-video',
     attrs: {
         controls: true,
     },
@@ -22,7 +22,7 @@ export const videoT = () => ({
 
 export const audioT = () => ({
     block: 'audio',
-    cls: 'mes-audio',
+    cls: 'node mes-audio',
     attrs: {
         controls: true,
     },
