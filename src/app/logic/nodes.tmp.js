@@ -28,12 +28,18 @@ export const audioT = () => ({
     },
 });
 
+export const userTxtT = (txt) => ({
+    block: 'div',
+    cls: 'node mes-txt mes-txt-user',
+    content: txt,
+});
+
 export const template = (tmp, param) => {
     let prm = param;
     if (!param) prm = null;
 
     const node = document.createElement('div');
-    node.innerHTML = engine(tmp(prm)).trim();
+    node.innerHTML = engine(tmp(prm));
     return node.firstChild;
 };
 

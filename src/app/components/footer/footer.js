@@ -1,4 +1,5 @@
 import './footer.css';
+import { template, userTxtT } from '../../logic/nodes.tmp';
 
 export default class Footer {
     constructor(formHandler) {
@@ -14,7 +15,8 @@ export default class Footer {
 
     onSubmit(e) {
         if (e.key === 'Enter') {
-            this.handler(this.mesInput.value);
+            const html = template(userTxtT, this.mesInput.value);
+            this.handler(html.outerHTML);
         }
     }
 }

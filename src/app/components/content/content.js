@@ -20,5 +20,3 @@ export default class Content {
         if (node.src) URL.revokeObjectURL(node.src);
     }
 }
-
-// white-space: pre;
