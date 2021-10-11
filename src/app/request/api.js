@@ -2,19 +2,16 @@ class Api {
     constructor(baseUrl) {
         this.baseUrl = baseUrl;
 
-        // this.user = {
-        //     add: async (userData) => {
-        //         const res = await this.post('/user/login', userData);
-        //         return res.json();
-        //     },
-        // };
-
-        // this.message = {
-        //     send: async (mesData) => {
-        //         const res = await this.post('/user/sendMes', mesData);
-        //         return res.text();
-        //     },
-        // };
+        this.message = {
+            send: async (mesData) => {
+                const res = await this.post('/message/send', mesData);
+                return res.text();
+            },
+            getMessages: async () => {
+                const res = await this.get('message/getMessages');
+                return res.json();
+            },
+        };
     }
 
     async api(url, settings) {
@@ -35,6 +32,12 @@ class Api {
                 Accept: 'application/json',
                 'Content-Type': 'application/json; charset=utf-8',
             },
+        });
+    }
+
+    async get(url) {
+        return this.api(url, {
+            method: 'GET',
         });
     }
 }

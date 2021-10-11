@@ -1,16 +1,16 @@
 /* eslint-disable import/prefer-default-export */
-import { getTime } from '../../lib/utils';
+// import { getTime } from '../../lib/utils';
 
-const headerDataT = () => ({
+const headerDataT = (time) => ({
     block: 'span',
     cls: 'header-data',
-    content: getTime(),
+    content: time,
 });
 
-const headerT = () => ({
+const headerT = (time) => ({
     block: 'header',
     cls: 'message-header',
-    content: [headerDataT()],
+    content: [headerDataT(time)],
 });
 
 const contentT = (content) => ({
@@ -19,8 +19,11 @@ const contentT = (content) => ({
     content,
 });
 
-export const noteT = (content) => ({
+export const noteT = (nodeObj) => ({
     block: 'li',
     cls: 'message',
-    content: [headerT(), contentT(content)],
+    content: [headerT(nodeObj.data.time), contentT(nodeObj.node.outerHTML)],
+    attrs: {
+        id: nodeObj.data.id,
+    },
 });
