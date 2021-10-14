@@ -1,6 +1,8 @@
 /* eslint-disable class-methods-use-this */
 import './content.css';
 import Upload from '../../logic/upload';
+import { noteT } from '../note/note.tmp';
+import engine from '../../lib/engine/engine';
 
 export default class Content {
     constructor(handler) {
@@ -10,7 +12,9 @@ export default class Content {
         this.upload = new Upload(handler, null, this.container);
     }
 
-    addMes(htmlNote) {
+    addMes(mesObj) {
+        const htmlNote = engine(noteT(mesObj));
+
         this.messages.insertAdjacentHTML('afterbegin', htmlNote);
         this.revokeURL(this.messages.firstElementChild);
     }

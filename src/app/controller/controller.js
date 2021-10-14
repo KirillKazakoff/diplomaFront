@@ -3,12 +3,9 @@
 import Content from '../components/content/content';
 import Header from '../components/header/header';
 import Footer from '../components/footer/footer';
+import Download from '../logic/download';
 
-import engine from '../lib/engine/engine';
-import { getData } from '../lib/utils';
-import { noteT } from '../components/note/note.tmp';
-import Upload from '../logic/upload';
-
+import { toFormData } from '../lib/utils';
 
 export default class Controller {
     constructor() {
@@ -17,10 +14,10 @@ export default class Controller {
         this.content = new Content(handler);
         this.header = new Header(handler);
         this.footer = new Footer(handler);
+        this.download = new Download(handler);
 
         this.container = document.querySelector('.chat');
         this.container.addEventListener('submit', (e) => this.onSubmit(e));
-        this.download = new Upload(handler);
     }
 
     onSubmit(e) {
@@ -28,12 +25,13 @@ export default class Controller {
     }
 
     submitHandler() {
-        return (nodeObj) => {
-            if (!nodeObj.data) {
-                nodeObj.data = getData();
+        return (mesObj) => {
+            const { file, fileData } = mesObj.data;
+
+            if (file) {
+                this.download.uploadToServ(file, fileData);
             }
-            const htmlNote = engine(noteT(nodeObj));
-            this.content.addMes(htmlNote);
+            this.content.addMes(mesObj);
         };
     }
 }

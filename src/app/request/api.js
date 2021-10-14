@@ -3,14 +3,37 @@ class Api {
         this.baseUrl = baseUrl;
 
         this.message = {
-            send: async (mesData) => {
-                const res = await this.post('/message/send', mesData);
+            sendFileData: async (fileData) => {
+                const res = await this.postJson('/message/sendFileData', fileData);
                 return res.text();
             },
-            getMessages: async () => {
-                const res = await this.get('message/getMessages');
+            sendFile: async (file) => {
+                const res = await this.post('/message/sendFile', file);
+                return res.text();
+            },
+
+            getFilesData: async () => {
+                const res = await this.get('/message/getFilesData');
                 return res.json();
             },
+            getFile: async (id) => {
+                const res = await this.get(`/${id}`);
+                return res.blob();
+            },
+
+            getImg: async () => {
+                const res = await this.get('/Landscape - 757.mp4');
+                return res.blob();
+            },
+            // getFile: async (id) => {
+            //     const res = await this.get(`/message/getFile/${id}`);
+            //     return res.json();
+            // },
+
+            // getTxt: async () => {
+            //     const res = await this.get('/files/test.txt');
+            //     return res.text();
+            // },
         };
     }
 
@@ -27,6 +50,13 @@ class Api {
     async post(url, postData) {
         return this.api(url, {
             method: 'POST',
+            body: postData,
+        });
+    }
+
+    async postJson(url, postData) {
+        return this.api(url, {
+            method: 'POST',
             body: JSON.stringify(postData),
             headers: {
                 Accept: 'application/json',
@@ -38,6 +68,9 @@ class Api {
     async get(url) {
         return this.api(url, {
             method: 'GET',
+            headers: {
+                'Content-Type': 'text/plain; charset=utf-8',
+            },
         });
     }
 }

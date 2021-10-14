@@ -12,3 +12,6 @@ h1 {
     top: -1000px;
 }
 
+/* "scripts": {
+    "start": "kill -9 $(lsof -ti:3000,3001) && npm start"
+ } */

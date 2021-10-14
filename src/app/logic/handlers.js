@@ -14,6 +14,9 @@ export function imgUpload(url) {
         img.addEventListener('load', () => {
             resolve(img);
         });
+        // img.addEventListener('error', (e) => {
+        //     console.log(e);
+        // });
         img.src = url;
     };
 
@@ -54,12 +57,6 @@ export function audioUpload(url) {
 
     return promisise(callback);
 }
-
-
-
-
-
-
 
 
 

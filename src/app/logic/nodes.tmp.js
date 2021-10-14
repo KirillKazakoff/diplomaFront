@@ -43,12 +43,6 @@ export const template = (tmp, param) => {
     return node.firstChild;
 };
 
-
-
-
-
-
-
 // const template = document.createElement('template');
 
 // template.innerHTML = engine(imgT(url));

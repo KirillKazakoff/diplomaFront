@@ -2,6 +2,7 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable class-methods-use-this */
 import { imgUpload, txtUpload, videoUpload, audioUpload } from './handlers';
+import { setData } from '../lib/utils';
 
 export default class Upload {
     constructor(handler, input, container) {
@@ -34,12 +35,12 @@ export default class Upload {
         this.onUpload({ target: e.dataTransfer });
     }
 
-    async onUpload(e) {
-        const { target } = e;
+    async onUpload(input) {
+        const { target } = input;
         let file = null;
 
         if (!target) {
-            file = e.file;
+            file = input.file;
         } else {
             file = target.files ? target.files[0] : null;
         }
@@ -48,6 +49,7 @@ export default class Upload {
         const { type } = file;
 
         const url = URL.createObjectURL(file);
+
         let node = null;
 
         if (type.includes('image')) {
@@ -66,11 +68,10 @@ export default class Upload {
             node = await audioUpload(url);
         }
 
-        node.title = file.name;
+        const mesObj = { node };
+        mesObj.data = input.data ? input.data : setData(file);
 
-        const nodeObj = { node };
-        node.data = e.data ? e.data : null;
-        this.handler(nodeObj);
+        this.handler(mesObj);
     }
 
     async readTxt(file) {
