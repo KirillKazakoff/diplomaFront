@@ -29,9 +29,21 @@ export default class ServerLoad {
     }
 
     down() {
-        return () => {
-            console.log('heh');
-            console.log(this.load);
+        return async () => {
+            const messagesData = await api.message.getFilesData();
+
+            const messages = [];
+            for (const fileData of messagesData) {
+                const file = await api.message.getFile(fileData.idExt);
+                const msg = { fileData, file };
+
+                messages.push(msg);
+            }
+
+            for (const msg of messages) {
+                await this.load.onUpload(msg);
+            }
+            return 'hello';
         };
     }
 

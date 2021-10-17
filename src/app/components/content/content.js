@@ -3,7 +3,8 @@
 /* eslint-disable class-methods-use-this */
 import './content.css';
 import { noteT } from '../noteTmp/note.tmp';
-import engine from '../../lib/engine/engine';
+// import engine from '../../lib/engine/engine';
+import { template } from '../../logic/nodes.tmp';
 
 import Upload from '../../logic/upload';
 import Scroll from './scroll';
@@ -15,19 +16,20 @@ export default class Content {
 
         this.scroll = new Scroll(this.messages, downloadHandler);
         this.upload = new Upload(uploadHandler, null, this.container);
-
-        this.messages.addEventListener('scroll', (e) => this.onScroll(e));
     }
 
     addMes(mesObj) {
-        const htmlNote = engine(noteT(mesObj));
+        const htmlNode = template(noteT, mesObj);
 
-        this.messages.insertAdjacentHTML('afterbegin', htmlNote);
+        const emptyNode = this.messages.querySelector('.empty-scroll');
+        this.messages.insertBefore(htmlNode, emptyNode);
 
-        const message = this.messages.firstElementChild;
-        const contentNode = message.querySelector('.node');
+        const { children } = this.messages;
+        const newMes = children[children.length - 2];
 
-        const loadLink = message.querySelector('.fileload-img-link');
+        const contentNode = newMes.querySelector('.node');
+
+        const loadLink = newMes.querySelector('.fileload-img-link');
         this.initLoadLink(loadLink, mesObj);
 
         // if (contentNode && contentNode.src) {
@@ -39,12 +41,5 @@ export default class Content {
         loadLink.download = mesObj.data.fileData.name;
         loadLink.href = mesObj.url;
         loadLink.rel = 'noopener';
-    }
-
-    onScroll(e) {
-        console.log(this.messages.scrollTop);
-
-        const { clientHeight, scrollHeight } = this.messages;
-        const scrollLength = scrollHeight - clientHeight;
     }
 }
