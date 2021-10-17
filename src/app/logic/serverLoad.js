@@ -4,7 +4,7 @@
 import Upload from './upload';
 import api from '../request/api';
 
-export default class Download {
+export default class ServerLoad {
     constructor(handler) {
         this.handler = handler;
         this.load = new Upload(handler);
@@ -15,19 +15,19 @@ export default class Download {
         const messagesData = await api.message.getFilesData();
 
         const messages = [];
-        for (const data of messagesData) {
-            const file = await api.message.getFile(data.id);
-            const msg = { data, file };
+        for (const fileData of messagesData) {
+            const file = await api.message.getFile(fileData.idExt);
+            const msg = { fileData, file };
 
             messages.push(msg);
         }
 
-        console.log(messages);
+        for (const msg of messages) {
+            await this.load.onUpload(msg);
+        }
 
         // const promises = messages.map((msg) => this.load.onUpload(msg));
-
         // await Promise.all(promises);
-        // console.log(messages);
     }
 
     async uploadToServ(file, fileData) {

@@ -1,13 +1,12 @@
 /* eslint-disable object-curly-newline */
 /* eslint-disable no-param-reassign */
 /* eslint-disable class-methods-use-this */
-import { imgUpload, txtUpload, videoUpload, audioUpload } from './handlers';
+import { imgUpload, userTxtUpload, videoUpload, audioUpload, docUpload } from './handlers';
 import { setData } from '../lib/utils';
 
 export default class Upload {
     constructor(handler, input, container) {
         this.handler = handler;
-        this.reader = new FileReader();
 
         if (container) {
             this.container = container;
@@ -36,7 +35,7 @@ export default class Upload {
     }
 
     async onUpload(input) {
-        const { target } = input;
+        const { target, fileData } = input;
         let file = null;
 
         if (!target) {
@@ -46,18 +45,24 @@ export default class Upload {
         }
 
         if (!file) return;
+
         const { type } = file;
+        const name = fileData ? fileData.name : file.name;
 
         const url = URL.createObjectURL(file);
-
         let node = null;
 
         if (type.includes('image')) {
             node = await imgUpload(url);
         }
 
-        if (type.includes('json') || type.includes('text')) {
-            node = await this.readTxt(file);
+        if ((type.includes('json') || type.includes('text') || type.includes('java'))
+        && (!name.includes('user'))) {
+            node = docUpload();
+        }
+
+        if (name.includes('user')) {
+            node = await userTxtUpload(file);
         }
 
         if (type.includes('video')) {
@@ -68,25 +73,11 @@ export default class Upload {
             node = await audioUpload(url);
         }
 
-        const mesObj = { node };
-        mesObj.data = input.data ? input.data : setData(file);
+        const mesObj = { node, url };
+
+        mesObj.data = fileData ? { fileData } : setData(file);
 
         this.handler(mesObj);
-    }
-
-    async readTxt(file) {
-        return new Promise((resolve) => {
-            const listenerHandler = async (e) => {
-                this.reader.removeEventListener('load', listenerHandler);
-                const node = await txtUpload(e.target.result);
-
-                resolve(node);
-            };
-
-            this.reader.addEventListener('load', listenerHandler);
-
-            this.reader.readAsBinaryString(file);
-        });
     }
 }
 

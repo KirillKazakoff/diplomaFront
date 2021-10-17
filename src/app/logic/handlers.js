@@ -1,7 +1,8 @@
 /* eslint-disable object-curly-newline */
 /* eslint-disable import/prefer-default-export */
 /* eslint-disable class-methods-use-this */
-import { imgT, txtT, videoT, audioT, template } from './nodes.tmp';
+import { imgT, docT, userTextT, videoT, audioT, template } from './nodes.tmp';
+import setLinksInText from '../components/footer/footerUtils/linkInText';
 
 function promisise(callback) {
     return new Promise((resolve) => callback(resolve));
@@ -9,24 +10,14 @@ function promisise(callback) {
 
 export function imgUpload(url) {
     const callback = (resolve) => {
-        const img = template(imgT);
+        const imgContainer = template(imgT);
+        const img = imgContainer.firstChild;
 
         img.addEventListener('load', () => {
-            resolve(img);
+            resolve(imgContainer);
         });
-        // img.addEventListener('error', (e) => {
-        //     console.log(e);
-        // });
+
         img.src = url;
-    };
-
-    return promisise(callback);
-}
-
-export function txtUpload(result) {
-    const callback = (resolve) => {
-        const txt = template(txtT, result);
-        resolve(txt);
     };
 
     return promisise(callback);
@@ -34,10 +25,11 @@ export function txtUpload(result) {
 
 export function videoUpload(url) {
     const callback = (resolve) => {
-        const video = template(videoT);
+        const videoContainer = template(videoT);
+        const video = videoContainer.firstChild;
 
         video.addEventListener('canplay', () => {
-            resolve(video);
+            resolve(videoContainer);
         });
         video.src = url;
     };
@@ -47,10 +39,11 @@ export function videoUpload(url) {
 
 export function audioUpload(url) {
     const callback = (resolve) => {
-        const audio = template(audioT);
+        const audioContainer = template(audioT);
+        const audio = audioContainer.firstChild;
 
         audio.addEventListener('canplay', () => {
-            resolve(audio);
+            resolve(audioContainer);
         });
         audio.src = url;
     };
@@ -58,24 +51,28 @@ export function audioUpload(url) {
     return promisise(callback);
 }
 
+export function userTxtUpload(file) {
+    const callback = (resolve) => {
+        const listenerHandler = async (e) => {
+            const { result } = e.target;
+            const resText = setLinksInText(result);
+            const resTextNode = template(userTextT, resText);
 
+            resolve(resTextNode);
+        };
 
+        const reader = new FileReader();
+        reader.addEventListener('load', listenerHandler);
 
+        reader.readAsBinaryString(file);
+    };
 
+    return promisise(callback);
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+export function docUpload() {
+    return template(docT);
+}
 
 // this.upload = new Upload((result) => {
 //     document.querySelector('.text-preview').textContent = result;

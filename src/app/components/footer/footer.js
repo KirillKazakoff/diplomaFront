@@ -1,6 +1,7 @@
 import './footer.css';
-import { template, userTxtT } from '../../logic/nodes.tmp';
+import { template, userTextT } from '../../logic/nodes.tmp';
 import { setData } from '../../lib/utils';
+import setLinksInText from './footerUtils/linkInText';
 
 export default class Footer {
     constructor(formHandler) {
@@ -17,12 +18,13 @@ export default class Footer {
     onSubmit(e) {
         if (e.key === 'Enter') {
             const { value } = this.mesInput;
-            const file = new File([value], 'noname', {
-                type: 'text/plain',
+
+            const file = new File([value], 'userText.txt', {
+                type: 'userText',
             });
 
             const mesObj = {
-                node: template(userTxtT, value),
+                node: template(userTextT, setLinksInText(value)),
                 data: setData(file),
             };
 

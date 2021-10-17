@@ -1,7 +1,8 @@
+/* eslint-disable no-param-reassign */
 /* eslint-disable class-methods-use-this */
 import './content.css';
 import Upload from '../../logic/upload';
-import { noteT } from '../note/note.tmp';
+import { noteT } from '../noteTmp/note.tmp';
 import engine from '../../lib/engine/engine';
 
 export default class Content {
@@ -16,11 +17,21 @@ export default class Content {
         const htmlNote = engine(noteT(mesObj));
 
         this.messages.insertAdjacentHTML('afterbegin', htmlNote);
-        this.revokeURL(this.messages.firstElementChild);
+
+        const message = this.messages.firstElementChild;
+        const contentNode = message.querySelector('.node');
+
+        const loadLink = message.querySelector('.fileload-img-link');
+        this.initLoadLink(loadLink, mesObj);
+
+        // if (contentNode && contentNode.src) {
+        //     URL.revokeObjectURL(contentNode.src);
+        // }
     }
 
-    revokeURL(message) {
-        const node = message.querySelector('.node');
-        if (node.src) URL.revokeObjectURL(node.src);
+    initLoadLink(loadLink, mesObj) {
+        loadLink.download = mesObj.data.fileData.name;
+        loadLink.href = mesObj.url;
+        loadLink.rel = 'noopener';
     }
 }
