@@ -1,3 +1,4 @@
+import './link.css';
 import linkT from './link.tmp';
 import engine from '../../../lib/engine/engine';
 
