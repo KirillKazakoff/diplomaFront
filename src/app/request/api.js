@@ -21,18 +21,9 @@ class Api {
                 return res.blob();
             },
 
-            getImg: async () => {
-                const res = await this.get('/Landscape - 757.mp4');
-                return res.blob();
-            },
-            // getFile: async (id) => {
-            //     const res = await this.get(`/message/getFile/${id}`);
-            //     return res.json();
-            // },
-
-            // getTxt: async () => {
-            //     const res = await this.get('/files/test.txt');
-            //     return res.text();
+            // getImg: async () => {
+            //     const res = await this.get('/Landscape - 757.mp4');
+            //     return res.blob();
             // },
         };
     }

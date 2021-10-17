@@ -8,11 +8,13 @@ import ServerLoad from '../logic/serverLoad';
 export default class Controller {
     constructor() {
         const handler = this.loadHandler();
+        this.serverLoad = new ServerLoad(handler);
 
-        this.content = new Content(handler);
+        const { downHandler } = this.serverLoad;
+
+        this.content = new Content(handler, downHandler);
         this.header = new Header(handler);
         this.footer = new Footer(handler);
-        this.serverLoad = new ServerLoad(handler);
 
         this.container = document.querySelector('.chat');
         this.container.addEventListener('submit', (e) => this.onSubmit(e));

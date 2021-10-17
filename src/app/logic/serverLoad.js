@@ -7,6 +7,7 @@ import api from '../request/api';
 export default class ServerLoad {
     constructor(handler) {
         this.handler = handler;
+        this.downHandler = this.down();
         this.load = new Upload(handler);
         this.downloadFromServ();
     }
@@ -25,9 +26,13 @@ export default class ServerLoad {
         for (const msg of messages) {
             await this.load.onUpload(msg);
         }
+    }
 
-        // const promises = messages.map((msg) => this.load.onUpload(msg));
-        // await Promise.all(promises);
+    down() {
+        return () => {
+            console.log('heh');
+            console.log(this.load);
+        };
     }
 
     async uploadToServ(file, fileData) {
