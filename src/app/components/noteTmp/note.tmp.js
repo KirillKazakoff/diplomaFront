@@ -1,5 +1,4 @@
 /* eslint-disable import/prefer-default-export */
-// import { getTime } from '../../lib/utils';
 
 const headerDataT = (time) => ({
     block: 'span',
@@ -29,20 +28,6 @@ const contentT = (html) => ({
     content: [html],
 });
 
-const noteViewT = (fileImgCls, loadImgCls) => ({
-    block: 'div',
-    cls: 'message-fileload',
-    content: [{
-        block: 'div',
-        cls: `file-img ${fileImgCls}`,
-        content: '',
-    }, {
-        block: 'div',
-        cls: `fileload-img ${loadImgCls}`,
-        content: '',
-    }],
-});
-
 export const noteT = (nodeObj) => {
     const { time, id, name: fileName } = nodeObj.data.fileData;
     const { outerHTML } = nodeObj.node;
@@ -54,4 +39,3 @@ export const noteT = (nodeObj) => {
         attrs: { id },
     };
 };
-

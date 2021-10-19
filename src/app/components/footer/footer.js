@@ -1,5 +1,6 @@
 import './footer.css';
-import { template, userTextT } from '../../logic/nodes.tmp';
+import template from '../../lib/engine/template';
+import { userTextT } from '../../logic/nodes.tmp';
 import { setData } from '../../lib/utils';
 import setLinksInText from './footerUtils/linkInText';
 

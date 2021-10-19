@@ -14,25 +14,9 @@ export default class ServerLoad {
         this.scrollLength = 0;
     }
 
-    // async downloadFromServ() {
-    //     const messagesData = await api.message.getFilesData();
-
-    //     const messages = [];
-    //     for (const fileData of messagesData) {
-    //         const file = await api.message.getFile(fileData.idExt);
-    //         const msg = { fileData, file };
-
-    //         messages.push(msg);
-    //     }
-
-    //     console.log(messages);
-    //     this.load.onUpload(messages);
-    // }
-
     down() {
         return async (direction) => {
             const messagesData = await api.message.getFilesData();
-            // if (direction === 'toTop') messagesData.reverse();
 
             const messages = [];
             for (const fileData of messagesData) {
@@ -42,7 +26,6 @@ export default class ServerLoad {
                 messages.push(msg);
             }
 
-            // console.log(messages);
             this.load.onUpload(messages);
         };
     }
@@ -52,3 +35,18 @@ export default class ServerLoad {
         await api.message.sendFile(file);
     }
 }
+
+// async downloadFromServ() {
+//     const messagesData = await api.message.getFilesData();
+
+//     const messages = [];
+//     for (const fileData of messagesData) {
+//         const file = await api.message.getFile(fileData.idExt);
+//         const msg = { fileData, file };
+
+//         messages.push(msg);
+//     }
+
+//     console.log(messages);
+//     this.load.onUpload(messages);
+// }

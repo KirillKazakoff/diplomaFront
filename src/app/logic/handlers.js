@@ -1,7 +1,8 @@
 /* eslint-disable object-curly-newline */
 /* eslint-disable import/prefer-default-export */
 /* eslint-disable class-methods-use-this */
-import { imgT, docT, userTextT, videoT, audioT, template } from './nodes.tmp';
+import template from '../lib/engine/template';
+import { imgT, docT, userTextT, videoT, audioT } from './nodes.tmp';
 import setLinksInText from '../components/footer/footerUtils/linkInText';
 
 function promisise(callback) {

@@ -1,6 +1,3 @@
-/* eslint-disable import/prefer-default-export */
-import engine from '../lib/engine/engine';
-
 // noteView (file icon and load icon)
 const noteViewT = (fileImgCls, loadImgCls) => ({
     block: 'div',
@@ -54,15 +51,3 @@ export const userTextT = (txt) => wrapperT({
     cls: 'node mes-txt mes-txt-user',
     content: txt,
 }, 'hidden', 'hidden');
-
-// templateFunc (toDOMNode)
-export const template = (tmp, param) => {
-    let prm = param;
-    if (!param) prm = null;
-
-    const node = document.createElement('div');
-
-    node.innerHTML = engine(tmp(prm));
-    return node.firstChild;
-};
-

@@ -24,19 +24,6 @@ export default class Controller {
         e.preventDefault();
     }
 
-    // loadHandler() {
-    //     return (mesArr) => {
-    //         mesArr.forEach((mesObj) => {
-    //             const { file, fileData } = mesObj.data;
-
-    //             if (file) {
-    //                 this.serverLoad.uploadToServ(file, fileData);
-    //             }
-    //             this.content.addMes(mesObj);
-    //         });
-    //     };
-    // }
-
     loadHandler() {
         return (mesArr) => {
             mesArr.messages.forEach((mesObj) => {
