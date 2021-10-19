@@ -73,7 +73,8 @@ export default class Upload {
             node = await audioUpload(url);
         }
 
-        const mesObj = { node, url };
+        const direction = input.direction ? input.direction : 'bottom';
+        const mesObj = { node, url, direction };
 
         mesObj.data = fileData ? { fileData } : setData(file);
 

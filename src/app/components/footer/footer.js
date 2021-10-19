@@ -26,6 +26,7 @@ export default class Footer {
             const mesObj = {
                 node: template(userTextT, setLinksInText(value)),
                 data: setData(file),
+                direction: 'toBottom',
             };
 
             this.handler(mesObj);

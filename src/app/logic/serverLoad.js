@@ -9,7 +9,9 @@ export default class ServerLoad {
         this.handler = handler;
         this.downHandler = this.down();
         this.load = new Upload(handler);
-        this.downloadFromServ();
+
+        this.messages = document.querySelector('.messages');
+        this.scrollLength = 0;
     }
 
     async downloadFromServ() {
@@ -29,13 +31,14 @@ export default class ServerLoad {
     }
 
     down() {
-        return async () => {
+        return async (direction) => {
             const messagesData = await api.message.getFilesData();
+            if (direction === 'toTop') messagesData.reverse();
 
             const messages = [];
             for (const fileData of messagesData) {
                 const file = await api.message.getFile(fileData.idExt);
-                const msg = { fileData, file };
+                const msg = { fileData, file, direction };
 
                 messages.push(msg);
             }
@@ -43,7 +46,6 @@ export default class ServerLoad {
             for (const msg of messages) {
                 await this.load.onUpload(msg);
             }
-            return 'hello';
         };
     }
 

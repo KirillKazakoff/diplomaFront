@@ -3,7 +3,7 @@
 /* eslint-disable class-methods-use-this */
 import './content.css';
 import { noteT } from '../noteTmp/note.tmp';
-// import engine from '../../lib/engine/engine';
+import engine from '../../lib/engine/engine';
 import { template } from '../../logic/nodes.tmp';
 
 import Upload from '../../logic/upload';
@@ -21,8 +21,11 @@ export default class Content {
     addMes(mesObj) {
         const htmlNode = template(noteT, mesObj);
 
-        const emptyNode = this.messages.querySelector('.empty-scroll');
-        this.messages.insertBefore(htmlNode, emptyNode);
+        const childNode = mesObj.direction === 'toBottom'
+            ? this.messages.querySelector('.empty-scroll')
+            : this.messages.firstElementChild;
+
+        this.messages.insertBefore(htmlNode, childNode);
 
         const { children } = this.messages;
         const newMes = children[children.length - 2];
@@ -31,10 +34,6 @@ export default class Content {
 
         const loadLink = newMes.querySelector('.fileload-img-link');
         this.initLoadLink(loadLink, mesObj);
-
-        // if (contentNode && contentNode.src) {
-        //     URL.revokeObjectURL(contentNode.src);
-        // }
     }
 
     initLoadLink(loadLink, mesObj) {
@@ -43,3 +42,19 @@ export default class Content {
         loadLink.rel = 'noopener';
     }
 }
+
+// addMes(mesObj) {
+//     const html = engine(noteT(mesObj));
+//     this.messages.insertAdjacentHTML('afterbegin', html);
+
+//     const newMes = this.messages.firstElementChild;
+
+//     const contentNode = newMes.querySelector('.node');
+
+//     const loadLink = newMes.querySelector('.fileload-img-link');
+//     this.initLoadLink(loadLink, mesObj);
+
+//     // if (contentNode && contentNode.src) {
+//     //     URL.revokeObjectURL(contentNode.src);
+//     // }
+// }

@@ -6134,6 +6134,19 @@ pretty-format@^27.0.6:
     ansi-styles "^5.0.0"
     react-is "^17.0.1"
 
+prevent-overscrolling@^1.1.0:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/prevent-overscrolling/-/prevent-overscrolling-1.1.1.tgz#57410e7c886a60500125b33fe733a9b63e8eccc6"
+  integrity sha512-7y1CmAjAxY7Nrn9IFPqseFLtFvaItJpJMvFSbvxHk9AxeN7tUopcPiG1gBZAeAmkIUSyg5ueJDNkcIVEfxtS0Q==
+
+prevent-scrolling@^1.3.6:
+  version "1.3.6"
+  resolved "https://registry.yarnpkg.com/prevent-scrolling/-/prevent-scrolling-1.3.6.tgz#4362e1b984e98828969e3d9b16befd72f632fbc0"
+  integrity sha512-m9YXapRN7boBLvVGGAJqNCghBbxTxwJlWcuk7LVtkLH8nUjtZgAXmzqrkpHILOQ/dc7jzbsGre1CYTwGdp4qUw==
+  dependencies:
+    prevent-overscrolling "^1.1.0"
+    ua-parser-js "^0.7.20"
+
 process-nextick-args@~2.0.0:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/process-nextick-args/-/process-nextick-args-2.0.1.tgz#7820d9b16120cc55ca9ae7792680ae7dba6d7fe2"
@@ -6574,6 +6587,11 @@ schema-utils@^3.0.0, schema-utils@^3.1.0:
     "@types/json-schema" "^7.0.8"
     ajv "^6.12.5"
     ajv-keywords "^3.5.2"
+
+scroll-lock@^2.1.5:
+  version "2.1.5"
+  resolved "https://registry.yarnpkg.com/scroll-lock/-/scroll-lock-2.1.5.tgz#18bb7697f02176cbfd093726c3c972b7cbc9975f"
+  integrity sha512-GN8Lp0AzXbkrPFUUNkMUruiiv019UvarNKE/SnXi+AxZRjMnDc2R22VB9RcUtL4P/uub04cKibmpHKIKTyWwYQ==
 
 select-hose@^2.0.0:
   version "2.0.0"
@@ -7316,6 +7334,11 @@ typedarray-to-buffer@^3.1.5:
   integrity sha512-zdu8XMNEDepKKR+XYOXAVPtWui0ly0NtohUscw+UmaHiAWT8hrV1rr//H6V+0DvJ3OQ19S979M0laLfX8rm82Q==
   dependencies:
     is-typedarray "^1.0.0"
+
+ua-parser-js@^0.7.20:
+  version "0.7.28"
+  resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.28.tgz#8ba04e653f35ce210239c64661685bf9121dec31"
+  integrity sha512-6Gurc1n//gjp9eQNXjD9O3M/sMwVtN5S8Lv9bvOYBfKfDNiIIhqiyi01vMBO45u4zkDE420w/e0se7Vs+sIg+g==
 
 unbox-primitive@^1.0.1:
   version "1.0.1"
