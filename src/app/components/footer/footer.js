@@ -26,10 +26,14 @@ export default class Footer {
             const mesObj = {
                 node: template(userTextT, setLinksInText(value)),
                 data: setData(file),
+            };
+
+            const mesArrObj = {
+                messages: [mesObj],
                 direction: 'toBottom',
             };
 
-            this.handler(mesObj);
+            this.handler(mesArrObj);
         }
     }
 }

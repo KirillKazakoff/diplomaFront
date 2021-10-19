@@ -1,12 +1,16 @@
+/* eslint-disable no-unused-expressions */
 /* eslint-disable no-restricted-globals */
 /* eslint-disable no-param-reassign */
 /* eslint-disable class-methods-use-this */
+
+// import { template } from '../../logic/nodes.tmp';
+
+// import Upload from '../../logic/upload';
 import './content.css';
 import { noteT } from '../noteTmp/note.tmp';
 import engine from '../../lib/engine/engine';
-import { template } from '../../logic/nodes.tmp';
 
-import Upload from '../../logic/upload';
+import MultipleUpload from '../../logic/multipleUpload';
 import Scroll from './scroll';
 
 export default class Content {
@@ -15,25 +19,25 @@ export default class Content {
         this.messages = this.container.querySelector('.messages');
 
         this.scroll = new Scroll(this.messages, downloadHandler);
-        this.upload = new Upload(uploadHandler, null, this.container);
+        this.upload = new MultipleUpload(uploadHandler, null, this.container);
     }
 
-    addMes(mesObj) {
-        const htmlNode = template(noteT, mesObj);
+    addMessages(mesArrObj) {
+        console.log(mesArrObj);
+        this.scroll.getOldScroll();
 
-        const childNode = mesObj.direction === 'toBottom'
-            ? this.messages.querySelector('.empty-scroll')
-            : this.messages.firstElementChild;
+        const totalHtml = mesArrObj.messages.reduce((total, msg) => {
+            total += engine(noteT(msg));
+            return total;
+        }, '');
 
-        this.messages.insertBefore(htmlNode, childNode);
+        const emptyScroll = this.messages.querySelector('.empty-scroll');
 
-        const { children } = this.messages;
-        const newMes = children[children.length - 2];
+        mesArrObj.direction === 'toTop'
+            ? this.messages.insertAdjacentHTML('afterbegin', totalHtml)
+            : emptyScroll.insertAdjacentHTML('beforebegin', totalHtml);
 
-        const contentNode = newMes.querySelector('.node');
-
-        const loadLink = newMes.querySelector('.fileload-img-link');
-        this.initLoadLink(loadLink, mesObj);
+        this.scroll.changeScroll();
     }
 
     initLoadLink(loadLink, mesObj) {
@@ -57,4 +61,41 @@ export default class Content {
 //     // if (contentNode && contentNode.src) {
 //     //     URL.revokeObjectURL(contentNode.src);
 //     // }
+// }
+
+// addMes(mesObj) {
+//     this.scroll.getOldScroll();
+//     const htmlNode = template(noteT, mesObj);
+
+//     const childNode = mesObj.direction === 'toBottom'
+//         ? this.messages.querySelector('.empty-scroll')
+//         : this.messages.firstElementChild;
+
+//     this.messages.insertBefore(htmlNode, childNode);
+
+//     // const { children } = this.messages;
+//     // const newMes = children[children.length - 2];
+
+//     // const loadLink = newMes.querySelector('.fileload-img-link');
+//     // this.initLoadLink(loadLink, mesObj);
+
+//     this.scroll.changeScroll();
+// }
+
+// addMes(mesObj) {
+//     const htmlNode = template(noteT, mesObj);
+
+//     const childNode = mesObj.direction === 'toBottom'
+//         ? this.messages.querySelector('.empty-scroll')
+//         : this.messages.firstElementChild;
+
+//     this.messages.insertBefore(htmlNode, childNode);
+
+//     const { children } = this.messages;
+//     const newMes = children[children.length - 2];
+
+//     const contentNode = newMes.querySelector('.node');
+
+//     const loadLink = newMes.querySelector('.fileload-img-link');
+//     this.initLoadLink(loadLink, mesObj);
 // }

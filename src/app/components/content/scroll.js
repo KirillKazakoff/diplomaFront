@@ -1,6 +1,55 @@
 /* eslint-disable class-methods-use-this */
 /* eslint-disable no-unused-expressions */
 /* eslint-disable no-use-before-define */
+
+export default class Scroll {
+    constructor(container, loadHandler) {
+        this.loadHandler = loadHandler;
+        this.container = container;
+
+        this.setScrollOnPromise();
+
+        this.curScrollPos = 0;
+        this.oldScroll = 0;
+    }
+
+    async setScrollOnPromise() {
+        await this.initLoad();
+        this.container.addEventListener('scroll', () => this.onScroll());
+    }
+
+    async onScroll() {
+        const { scrollTop } = this.container;
+
+        if (scrollTop === 0) {
+            await this.loadHandler('toTop');
+        }
+    }
+
+    async initLoad() {
+        await this.loadHandler('toBottom');
+
+        const { clientHeight, scrollHeight } = this.container;
+        const scrollLength = scrollHeight - clientHeight;
+
+        this.container.scroll(0, scrollLength);
+    }
+
+    getOldScroll() {
+        const { scrollHeight, scrollTop, clientHeight } = this.container;
+
+        this.curScrollPos = scrollTop;
+        this.oldScroll = scrollHeight - clientHeight;
+    }
+
+    changeScroll() {
+        const { scrollHeight, clientHeight } = this.container;
+
+        const newScroll = scrollHeight - clientHeight;
+        this.container.scrollTop = this.curScrollPos + (newScroll - this.oldScroll);
+    }
+}
+
 // import { PreventScrolling, ReEnableScrolling } from 'prevent-scrolling';
 
 // export default class Scroll {
@@ -61,46 +110,3 @@
 //     }
 // }
 
-
-
-export default class Scroll {
-    constructor(container, loadHandler) {
-        this.loadHandler = loadHandler;
-        this.container = container;
-
-        this.setScrollOnPromise();
-
-        this.totalElemsScrollHeight = 0;
-        this.totalScrollHeight = 0;
-    }
-
-    async setScrollOnPromise() {
-        await this.initLoad();
-        this.container.addEventListener('scroll', (e) => this.onScroll(e));
-    }
-
-    async onScroll(e) {
-        const { scrollTop, scrollHeight, clientHeight } = this.container;
-
-        console.log(scrollTop);
-        if (scrollTop === 0) {
-            await this.loadHandler('toTop');
-        }
-    }
-
-    async initLoad() {
-        await this.loadHandler('toBottom');
-
-        const { clientHeight, scrollHeight } = this.container;
-        const scrollLength = scrollHeight - clientHeight;
-
-        this.container.scroll(0, scrollLength);
-    }
-
-    changeScroll(insertNode) {
-        // const curScrollPos = this.messages.scrollTop;
-        // const oldScroll = this.messages.scrollHeight - this.messages.clientHeight;
-        // const newScroll = this.messages.scrollHeight - this.messages.clientHeight;
-        // this.messages.scrollTop = curScrollPos + (newScroll - oldScroll);
-    }
-}
