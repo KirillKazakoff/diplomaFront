@@ -1,24 +1,36 @@
 @font-face {
-    font-family: 'HeaderFont';
+    font-family: 'Belwe';
     src: url('./fonts/BELWEB.ttf') format('truetype');
 }
 
 @font-face {
-    font-family: 'InputFont';
-    src: url('./fonts/JustDieAlready.ttf') format('truetype');
+    font-family: 'MyScars';
+    src: url('./fonts/my.scars.ttf') format('truetype');
 }
 
 @font-face {
-    font-family: 'OptionFont';
+    font-family: 'Ustroke';
+    src: url('./fonts/Ustroke-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'DeadBitch';
     src: url('./fonts/DeadBitch-Regular.ttf') format('truetype');
 }
 
 body {
-    font-family: 'HeaderFont';
-} 
+    font-family: 'MyScars', 'Ustroke';
+}
 
 input {
     color: rgb(185, 44, 23);
-    font-family: 'HeaderFont';
-    font-size: 35px;
+    font-family: 'MyScars';
+    font-size: 45px;
+}
+
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px gray inset !important;
+  -webkit-text-fill-color: rgb(185, 44, 23) !important;
 }

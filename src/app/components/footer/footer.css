@@ -7,16 +7,14 @@
 }
 
 .footer-badge {
-    width: 40px;
-    height: 40px;
+    height: 50px;
+    width: 50px;
     background-size: cover;
 }
 
 .input__message {
     position: static;
     padding: 10px 15px;
-    border: 5px groove solid;
-    border-radius: 10px;
     width: 80%;
     margin-left: auto;
     margin-right: auto;
@@ -24,7 +22,7 @@
 
 .input__message::placeholder {
     color: black;
-    font-family: 'OptionFont';
+    font-family: 'DeadBitch';
 }
 
 .record-input {
@@ -33,9 +31,12 @@
 }
 
 .footer-badge__emoji {
-    background-image: url('./img/emoji-badge.png');
+    width: 40px;
+    background-image: url('./img/emoji-badge2.png');
+    background-position: center;
 }
 
 .footer-badge__record {
-    background-image: url('./img/record-badge.png');
+    width: 50px;
+    background-image: url('./img/record-badge2.png');
 }
