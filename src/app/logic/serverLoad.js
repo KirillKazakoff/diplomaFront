@@ -10,13 +10,15 @@ export default class ServerLoad {
         this.downHandler = this.down();
         this.load = new MultipleUpload(handler);
 
-        this.messages = document.querySelector('.messages');
-        this.scrollLength = 0;
+        // window.onbeforeunload = () => api.leave.sendLeaveSignal();
+        window.addEventListener('beforeunload', () => api.leave.sendLeaveSignal());
     }
 
     down() {
         return async (direction) => {
             const messagesData = await api.message.getFilesData();
+            if (!messagesData) return;
+            console.log(messagesData);
 
             const messages = [];
             for (const fileData of messagesData) {
@@ -35,18 +37,3 @@ export default class ServerLoad {
         await api.message.sendFile(file);
     }
 }
-
-// async downloadFromServ() {
-//     const messagesData = await api.message.getFilesData();
-
-//     const messages = [];
-//     for (const fileData of messagesData) {
-//         const file = await api.message.getFile(fileData.idExt);
-//         const msg = { fileData, file };
-
-//         messages.push(msg);
-//     }
-
-//     console.log(messages);
-//     this.load.onUpload(messages);
-// }
