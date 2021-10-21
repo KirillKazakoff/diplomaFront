@@ -3,7 +3,6 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
@@ -33,8 +32,13 @@
         <footer class="chat-footer">
             <div class="footer-badge footer-badge__emoji"></div>
             <input class="input input__message" name="messge" placeholder="Type your message here">
-            <div class="footer-badge footer-badge__record">
-                <input type="file" class="input input__record">
+            <div class="recorders-container">
+                <div class="footer-badge footer-badge__audio-record">
+                    <input type="file" class="input input__record">
+                </div>
+                <div class="footer-badge footer-badge__video-record">
+                    <input type="file" class="input input__record">
+                </div>
             </div>
         </footer>
     </form>

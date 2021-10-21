@@ -36,7 +36,20 @@
     background-position: center;
 }
 
-.footer-badge__record {
+.recorders-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 180px;
+}
+
+.footer-badge__audio-record {
     width: 50px;
-    background-image: url('./img/record-badge2.png');
+    background-image: url('./img/audio-record-badge.png');
+}
+
+.footer-badge__video-record {
+    height: 60px;
+    width: 60px;
+    background-image: url('./img/video-record-badge.png');
 }

@@ -23,8 +23,8 @@ body {
 }
 
 input {
-    color: rgb(185, 44, 23);
-    font-family: 'MyScars';
+    color: rgba(113, 24, 12, 1);
+    font-family: 'MyScars', 'Ustroke';
     font-size: 45px;
 }
 
@@ -32,5 +32,5 @@ input:-webkit-autofill,
 textarea:-webkit-autofill,
 select:-webkit-autofill {
   -webkit-box-shadow: 0 0 0 1000px gray inset !important;
-  -webkit-text-fill-color: rgb(185, 44, 23) !important;
+  -webkit-text-fill-color: rgba(113, 24, 12, 1) !important;
 }

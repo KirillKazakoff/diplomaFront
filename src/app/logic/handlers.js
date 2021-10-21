@@ -1,6 +1,8 @@
 /* eslint-disable object-curly-newline */
 /* eslint-disable import/prefer-default-export */
 /* eslint-disable class-methods-use-this */
+import encoding from 'encoding-japanese';
+
 import template from '../lib/engine/template';
 import { imgT, docT, userTextT, videoT, audioT } from './nodes.tmp';
 import setLinksInText from '../components/footer/footerUtils/linkInText';
@@ -52,11 +54,22 @@ export function audioUpload(url) {
     return promisise(callback);
 }
 
+function codeConvert(result) {
+    const convRes = encoding.convert(result, {
+        to: 'UNICODE',
+        from: 'UTF8',
+    });
+
+    return convRes;
+}
+
 export function userTxtUpload(file) {
     const callback = (resolve) => {
         const listenerHandler = async (e) => {
             const { result } = e.target;
-            const resText = setLinksInText(result);
+            const totalRes = codeConvert(result);
+
+            const resText = setLinksInText(totalRes);
             const resTextNode = template(userTextT, resText);
 
             resolve(resTextNode);

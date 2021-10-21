@@ -20,6 +20,8 @@ export default class Footer {
         if (e.key === 'Enter') {
             const { value } = this.mesInput;
 
+            if (!value) return;
+
             const file = new File([value], 'userText.txt', {
                 type: 'userText',
             });
@@ -35,6 +37,7 @@ export default class Footer {
             };
 
             this.handler(mesArrObj);
+            this.mesInput.value = '';
         }
     }
 }
