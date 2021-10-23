@@ -3,13 +3,7 @@
     height: 10%;
     display: flex;
     align-items: center;
-    padding: 10px 50px 10px 50px;
-}
-
-.footer-badge {
-    height: 50px;
-    width: 50px;
-    background-size: cover;
+    padding: 10px 20px 10px 50px;
 }
 
 .input__message {
@@ -30,17 +24,23 @@
     top: -1000px;
 }
 
+.footer-badge {
+    cursor: pointer;
+    height: 50px;
+    width: 50px;
+    background-size: cover;
+}
+
 .footer-badge__emoji {
     width: 40px;
     background-image: url('./img/emoji-badge2.png');
     background-position: center;
 }
 
-.recorders-container {
+.media {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    min-width: 180px;
+    /* min-width: 180px; */
 }
 
 .footer-badge__audio-record {
@@ -52,4 +52,58 @@
     height: 60px;
     width: 60px;
     background-image: url('./img/video-record-badge.png');
+}
+
+#myAudio {}
+
+.recorder {
+    display: flex;
+    align-items: center;
+}
+
+.recorder:nth-child(n+2) {
+    margin-left: 50px;
+}
+
+.controls {
+    display: flex;
+}
+
+.cancel-record {
+    cursor: pointer;
+    color: red;
+}
+
+.send-record {
+    cursor: pointer;
+    color: green;
+}
+
+.controls__audio {
+    width: 150px;
+    margin-right: 20px;
+    justify-content: space-between;
+}
+
+.video-wrapper {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+#myVideo {
+    width: 100vw;    
+    height: 100vh;
+}
+
+
+
+.back-button {
+    color: white;
+    position: absolute;
+    top: 0;
+    left: 0;
 }

@@ -3,18 +3,19 @@
 import Content from '../components/content/content';
 import Header from '../components/header/header';
 import Footer from '../components/footer/footer';
-import ServerLoad from '../logic/serverLoad';
+import ServerLoad from '../upload/serverLoad';
 
 export default class Controller {
     constructor() {
-        const handler = this.loadHandler();
-        this.serverLoad = new ServerLoad(handler);
+        const mediaHandler = this.mediaHander();
+        const loadHandler = this.loadHandler();
+        this.serverLoad = new ServerLoad(loadHandler);
 
         const { downHandler } = this.serverLoad;
 
-        this.content = new Content(handler, downHandler);
-        this.header = new Header(handler);
-        this.footer = new Footer(handler);
+        this.content = new Content(loadHandler, downHandler);
+        this.header = new Header(loadHandler);
+        this.footer = new Footer(loadHandler, mediaHandler);
 
         this.container = document.querySelector('.chat');
         this.container.addEventListener('submit', (e) => this.onSubmit(e));
@@ -34,6 +35,12 @@ export default class Controller {
                 }
             });
             this.content.addMessages(mesArr);
+        };
+    }
+
+    mediaHander() {
+        return () => {
+            this.container.classList.toggle('hidden');
         };
     }
 }

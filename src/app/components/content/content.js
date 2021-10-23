@@ -7,7 +7,7 @@ import './content.css';
 import { noteT } from '../noteTmp/note.tmp';
 import engine from '../../lib/engine/engine';
 
-import MultipleUpload from '../../logic/multipleUpload';
+import MultipleUpload from '../../upload/multipleUpload';
 import Scroll from './scroll';
 import Messages from './messages';
 

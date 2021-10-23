@@ -10,7 +10,6 @@ export default class ServerLoad {
         this.downHandler = this.down();
         this.load = new MultipleUpload(handler);
 
-        // window.onbeforeunload = () => api.leave.sendLeaveSignal();
         window.addEventListener('beforeunload', () => api.leave.sendLeaveSignal());
     }
 

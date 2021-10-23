@@ -1,22 +1,25 @@
 import './footer.css';
 import template from '../../lib/engine/template';
-import { userTextT } from '../../logic/nodes.tmp';
+import { userTextT } from '../../upload/nodes.tmp';
 import { setData } from '../../lib/utils';
 import setLinksInText from './footerUtils/linkInText';
 
+import Media from './media/media';
+
 export default class Footer {
-    constructor(formHandler) {
-        this.handler = formHandler;
+    constructor(loadHandler, mediaHandler) {
+        this.loadHandler = loadHandler;
 
         this.container = document.querySelector('.chat-footer');
         this.button = this.container.querySelector('.footer-badge__record');
         this.input = this.container.querySelector('.record-input');
+        this.media = new Media(this.container, loadHandler, mediaHandler);
 
         this.mesInput = this.container.querySelector('.input__message');
-        document.addEventListener('keydown', (e) => this.onSubmit(e));
+        document.addEventListener('keydown', (e) => this.sendTextMessage(e));
     }
 
-    onSubmit(e) {
+    sendTextMessage(e) {
         if (e.key === 'Enter') {
             const { value } = this.mesInput;
 
@@ -26,18 +29,22 @@ export default class Footer {
                 type: 'userText',
             });
 
-            const mesObj = {
-                node: template(userTextT, setLinksInText(value)),
-                data: setData(file),
-            };
-
-            const mesArrObj = {
-                messages: [mesObj],
-                direction: 'toBottom',
-            };
-
-            this.handler(mesArrObj);
+            this.prepareAndSend(userTextT, setLinksInText(value), file);
             this.mesInput.value = '';
         }
+    }
+
+    prepareAndSend(tmp, param, file) {
+        const mesObj = {
+            node: template(tmp, param),
+            data: setData(file),
+        };
+
+        const mesArrObj = {
+            messages: [mesObj],
+            direction: 'toBottom',
+        };
+
+        this.loadHandler(mesArrObj);
     }
 }
