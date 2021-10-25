@@ -32,6 +32,7 @@
 }
 
 .footer-badge__emoji {
+    margin-right: 20px;
     width: 40px;
     background-image: url('./img/emoji-badge2.png');
     background-position: center;
@@ -54,8 +55,6 @@
     background-image: url('./img/video-record-badge.png');
 }
 
-#myAudio {}
-
 .recorder {
     display: flex;
     align-items: center;
@@ -74,19 +73,31 @@
     color: red;
 }
 
+.cancel-record__video {
+
+}
+
 .send-record {
     cursor: pointer;
     color: green;
 }
 
 .controls__audio {
-    width: 150px;
+    width: 220px;
     margin-right: 20px;
     justify-content: space-between;
 }
 
-.video-wrapper {
+.audio-wrapper {
+    font-size: 30px;
+    display: flex;
+}
+
+.audio-wrapper.hidden {
     display: none;
+}
+
+.video-wrapper {
     position: absolute;
     top: 0;
     left: 0;
@@ -94,16 +105,71 @@
     bottom: 0;
 }
 
-#myVideo {
-    width: 100vw;    
+.controls__video {
+    font-size: 40px;
+    position: relative;
+    top: -100px;
+    right: 50px;
+
+    width: 200px;
+    justify-content: space-between;
+    display: flex;
+    margin-left: auto;
+}
+
+/* #myVideoTimer {
+    z-index: 100;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 0px;
+    height: 0px;
+} */
+
+#video {
+    width: 100vw;
     height: 100vh;
 }
 
+#audio {
+    position: relative;
+    right: -120px;
+}
 
+#audio .vjs-control-bar .vjs-play-control {
+    display: none;
+}
 
-.back-button {
-    color: white;
-    position: absolute;
-    top: 0;
-    left: 0;
+.vjs-control-bar .vjs-record-button {
+    display: none;
+}
+
+#audio .vjs-current-time {
+    position: relative;
+    top: 30px;
+    left: -100px;
+}
+
+#audio .vjs-current-time-display {
+    margin-left: 20px;
+    font-size: 25px;
+}
+
+#audio .vjs-record-indicator {
+    width: 1.8em;
+    height: 1.8em;
+    top: 9px;
+    left: 35px;
+}
+
+#audio .vjs-record-indicator:after {
+    top: 5px;
+    left: 5px;
+    width: 0.8em;
+    height: 0.8em;
+    line-height: 2em;
+    border: 4px solid #ff625e;
+    animation-duration: 1.5s;
 }

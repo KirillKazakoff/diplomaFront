@@ -5,19 +5,19 @@ import MicrophonePlugin from 'wavesurfer.js/dist/plugin/wavesurfer.microphone';
 import Wavesurfer from 'videojs-wavesurfer/dist/videojs.wavesurfer.js';
 import videojs from 'video.js';
 import Record from 'videojs-record/dist/videojs.record.js';
-import VmsgEngine from 'videojs-record/dist/plugins/videojs.record.vmsg';
+import LamejsEngine from 'videojs-record/dist/plugins/videojs.record.lamejs.js';
 
 import MyRecorder from '../myRecorder';
 
 WaveSurfer.microphone = MicrophonePlugin;
 
 export default class AudioRec {
-    constructor(container, uploadHandler) {
+    constructor(container, handlers) {
         this.container = container;
         this.initOptions();
 
-        this.player = videojs('myAudio', this.options);
-        this.recorder = new MyRecorder(this.player, container, uploadHandler);
+        this.player = videojs('audio', this.options);
+        this.recorder = new MyRecorder(this.player, container, handlers);
     }
 
     initOptions() {
@@ -30,7 +30,8 @@ export default class AudioRec {
                 deviceButton: false,
                 timeDivider: false,
                 durationDisplay: false,
-                currentTimeDisplay: false,
+                liveDisplay: false,
+                seekToLive: false,
             },
             width: 0,
             height: 0,
@@ -53,10 +54,9 @@ export default class AudioRec {
                 record: {
                     audio: true,
                     video: false,
-                    maxLength: 20,
-                    debug: true,
-                    audioEngine: 'vmsg',
-                    audioWebAssemblyURL: '../../../../../node_modules/vmsg/vmsg.wasm',
+                    maxLength: 5,
+                    audioEngine: 'lamejs',
+                    audioWorkerURL: '../../../../../node_modules/lamejs/worker-example/worker-realtime.js',
                 },
             },
         };

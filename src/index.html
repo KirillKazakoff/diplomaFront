@@ -8,6 +8,8 @@
 </head>
 
 <body>
+    <button class="testBtn1">Promise Closure</button>
+    <button class="testBtn2">After Btn</button>
     <!-- <div class="media">
         <div class="video-wrapper">
             <video id="myVideo" playsinline class="video-js vjs-default-skin"></video>
@@ -43,21 +45,9 @@
             <div class="footer-badge footer-badge__emoji"></div>
             <input class="input input__message" name="messge" placeholder="Type your message here">
             <div class="media">
-                <!-- <div class="footer-badge footer-badge__audio-record">
-                    <div class="audio-wrapper">
-                        <audio id="myAudio" class="video-js vjs-default-skin"></audio>
-                        <button class="cancel-record">X</button>
-                    </div>
-                </div> -->
-                <!-- <div class="footer-badge footer-badge__video-record">
-                    <div class="video-wrapper">
-                        <video id="myVideo" playsinline class="video-js vjs-default-skin"></video>
-                        <button class="cancel-record">X</button>
-                    </div>
-                </div> -->
                 <div class="recorder recorder__audio">
-                    <div class="audio-wrapper">
-                        <audio id="myAudio" class="video-js vjs-default-skin"></audio>
+                    <div class="recorder-wrapper audio-wrapper hidden">
+                        <audio id="audio" class="video-js vjs-default-skin"></audio>
                         <div class="controls controls__audio">
                             <button class="cancel-record cancel-record__audio">X</button>
                             <button class="send-record send-record__audio">V</button>
@@ -66,8 +56,8 @@
                     <div class="footer-badge footer-badge__audio-record"></div>    
                 </div>
                 <div class="recorder recorder__video">
-                    <div class="video-wrapper">
-                        <audio id="myVideo" class="video-js vjs-default-skin"></audio>
+                    <div class="recorder-wrapper video-wrapper hidden">
+                        <video id="video" class="video-js vjs-default-skin"></video>
                         <div class="controls controls__video">
                             <button class="cancel-record cancel-record__video">X</button>
                             <button class="send-record send-record__video">V</button>

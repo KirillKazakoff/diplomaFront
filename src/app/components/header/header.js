@@ -1,5 +1,4 @@
 import './header.css';
-// import Upload from '../../logic/upload';
 import MultipleUpload from '../../upload/multipleUpload';
 
 export default class Header {
