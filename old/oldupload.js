@@ -1,10 +1,10 @@
 /* eslint-disable object-curly-newline */
 /* eslint-disable no-param-reassign */
 /* eslint-disable class-methods-use-this */
-import { imgUpload, userTxtUpload, videoUpload, audioUpload, docUpload } from '../src/app/upload/handlers';
+import { imgUpload, userTxtUpload, videoUpload, audioUpload, docUpload } from '../src/app/upload/parseUpload/handlers';
 import { setData } from '../src/app/lib/utils';
 
-export default class Upload {
+export default class OldUpload {
     constructor(handler, input, container) {
         this.handler = handler;
 

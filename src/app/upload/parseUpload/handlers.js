@@ -3,9 +3,9 @@
 /* eslint-disable class-methods-use-this */
 import encoding from 'encoding-japanese';
 
-import template from '../lib/engine/template';
+import template from '../../lib/engine/template';
 import { imgT, docT, userTextT, videoT, audioT } from './nodes.tmp';
-import setLinksInText from '../components/footer/footerUtils/linkInText';
+import setLinksInText from '../../components/footer/footerUtils/linkInText';
 
 function promisise(callback) {
     return new Promise((resolve) => callback(resolve));

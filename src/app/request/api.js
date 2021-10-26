@@ -68,8 +68,6 @@ class Api {
 const api = new Api('http://localhost:9091');
 export default api;
 
-
-
 // getImg: async () => {
 //     const res = await this.get('/Landscape - 757.mp4');
 //     return res.blob();

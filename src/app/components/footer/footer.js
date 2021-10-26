@@ -1,6 +1,6 @@
 import './footer.css';
 import template from '../../lib/engine/template';
-import { userTextT } from '../../upload/nodes.tmp';
+import { userTextT } from '../../upload/parseUpload/nodes.tmp';
 import { setData } from '../../lib/utils';
 import setLinksInText from './footerUtils/linkInText';
 

@@ -8,4 +8,4 @@ window.onload = async () => {
     const controller = new Controller();
 };
 
-const worker = new Worker('first-worker.js');
+// const worker = new Worker('first-worker.js');

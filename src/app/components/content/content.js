@@ -7,7 +7,7 @@ import './content.css';
 import { noteT } from '../noteTmp/note.tmp';
 import engine from '../../lib/engine/engine';
 
-import MultipleUpload from '../../upload/multipleUpload';
+import Upload from '../../upload/upload';
 import Scroll from './scroll';
 import Messages from './messages';
 
@@ -17,7 +17,7 @@ export default class Content {
         this.messages = new Messages(this.container.querySelector('.messages'));
 
         this.scroll = new Scroll(this.messages.container, downloadHandler);
-        this.upload = new MultipleUpload(uploadHandler, null, this.container);
+        this.upload = new Upload(uploadHandler, null, this.container);
     }
 
     addMessages(mesArrObj) {

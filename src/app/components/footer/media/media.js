@@ -5,14 +5,14 @@ import './styles';
 import AudioRec from './recorder/recorders/audioRec';
 import VideoRec from './recorder/recorders/videoRec';
 
-import MultipleUpload from '../../../upload/multipleUpload';
+import Upload from '../../../upload/upload';
 
 import engine from '../../../lib/engine/engine';
 import recT from './recorder/recorder.tmp';
 
 export default class Media {
     constructor(footer, loadHandler) {
-        this.upload = new MultipleUpload(loadHandler);
+        this.upload = new Upload(loadHandler);
         this.handlers = {
             upload: this.uploadData(),
             recreateRec: this.recreateRec(),
@@ -21,7 +21,6 @@ export default class Media {
         this.container = footer.querySelector('.media');
         this.audioContainer = footer.querySelector('.recorder__audio');
         this.videoContainer = footer.querySelector('.recorder__video');
-
 
         this.audioRec = this.initAudio();
         this.videoRec = this.initVideo();

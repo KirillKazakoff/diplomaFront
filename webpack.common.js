@@ -81,7 +81,7 @@ module.exports = {
         new CopyPlugin({
             patterns: [
                 { from: "src/img/srcImg", to: "img" },
-                { from: "src/jsZipUtils.js", to: "./"},
+                // { from: "src/jsZipUtils.js", to: "./"},
             ],
         }),
     ],

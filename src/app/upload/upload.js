@@ -3,13 +3,11 @@
 /* eslint-disable object-curly-newline */
 /* eslint-disable no-param-reassign */
 /* eslint-disable class-methods-use-this */
-// import JSZip from 'jszip';
-import { imgUpload, userTxtUpload, videoUpload, audioUpload, docUpload } from './handlers';
 import { setData } from '../lib/utils';
-import unzip from './uploadUtils/unzip';
+import unzip from './unzip/unzip';
+import parseUpload from './parseUpload/parseUpload';
 
-
-export default class MultipleUpload {
+export default class Upload {
     constructor(handler, input, container) {
         this.handler = handler;
 
@@ -39,7 +37,6 @@ export default class MultipleUpload {
         this.onUpload({ target: e.dataTransfer });
     }
 
-
     async onUpload(input) {
         const { target } = input;
         let files = [];
@@ -50,9 +47,7 @@ export default class MultipleUpload {
         };
 
         if (!target) {
-            unzip(input);
-            files = input;
-            // add func unzip files from server
+            files = await unzip(input);
             mesObjArr.direction = 'toTop';
         } else {
             // add uploadToServ handler
@@ -64,45 +59,51 @@ export default class MultipleUpload {
 
         for (const file of files) {
             const { fileData } = file;
-            const name = fileData ? fileData.name : file.file.name;
+            let type = null;
+            let name = null;
 
-            const { type } = file.fileData;
-            const mesObj = await this.parseUpload(file.file, name, type);
+            if (fileData) {
+                name = fileData.name;
+                type = fileData.type;
+            } else {
+                name = file.file.name;
+                type = file.file.type;
+            }
+            const mesObj = await parseUpload(file.file, name, type);
 
             mesObj.data = fileData ? { fileData } : setData(file.file);
             mesObjArr.messages.push(mesObj);
         }
 
-        // renderHandler
         this.handler(mesObjArr);
     }
 
-    async parseUpload(file, fileName, type) {
-        let node = null;
-        // const { type } = file;
-        const url = URL.createObjectURL(file);
+    // async parseUpload(file, fileName, type) {
+    //     let node = null;
+    //     // const { type } = file;
+    //     const url = URL.createObjectURL(file);
 
-        if (type.includes('image')) {
-            node = await imgUpload(url);
-        }
+    //     if (type.includes('image')) {
+    //         node = await imgUpload(url);
+    //     }
 
-        if ((type.includes('json') || type.includes('text') || type.includes('java'))
-            && (!fileName.includes('user'))) {
-            node = docUpload();
-        }
+    //     if ((type.includes('json') || type.includes('text') || type.includes('java'))
+    //         && (!fileName.includes('user'))) {
+    //         node = docUpload();
+    //     }
 
-        if (fileName.includes('user')) {
-            node = await userTxtUpload(file);
-        }
+    //     if (fileName.includes('user')) {
+    //         node = await userTxtUpload(file);
+    //     }
 
-        if (type.includes('video')) {
-            node = await videoUpload(url);
-        }
+    //     if (type.includes('video')) {
+    //         node = await videoUpload(url);
+    //     }
 
-        if (type.includes('audio')) {
-            node = await audioUpload(url);
-        }
+    //     if (type.includes('audio')) {
+    //         node = await audioUpload(url);
+    //     }
 
-        return { node, url };
-    }
+    //     return { node, url };
+    // }
 }
