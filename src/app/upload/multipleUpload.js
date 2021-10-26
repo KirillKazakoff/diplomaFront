@@ -3,8 +3,11 @@
 /* eslint-disable object-curly-newline */
 /* eslint-disable no-param-reassign */
 /* eslint-disable class-methods-use-this */
+// import JSZip from 'jszip';
 import { imgUpload, userTxtUpload, videoUpload, audioUpload, docUpload } from './handlers';
 import { setData } from '../lib/utils';
+import unzip from './uploadUtils/unzip';
+
 
 export default class MultipleUpload {
     constructor(handler, input, container) {
@@ -36,18 +39,23 @@ export default class MultipleUpload {
         this.onUpload({ target: e.dataTransfer });
     }
 
+
     async onUpload(input) {
         const { target } = input;
         let files = [];
+
         const mesObjArr = {
             messages: [],
             direction: '',
         };
 
         if (!target) {
+            unzip(input);
             files = input;
+            // add func unzip files from server
             mesObjArr.direction = 'toTop';
         } else {
+            // add uploadToServ handler
             files = [...target.files].map((file) => ({ file }));
             mesObjArr.direction = 'toBottom';
         }
@@ -58,19 +66,20 @@ export default class MultipleUpload {
             const { fileData } = file;
             const name = fileData ? fileData.name : file.file.name;
 
-            const mesObj = await this.parseUpload(file.file, name);
+            const { type } = file.fileData;
+            const mesObj = await this.parseUpload(file.file, name, type);
 
             mesObj.data = fileData ? { fileData } : setData(file.file);
             mesObjArr.messages.push(mesObj);
         }
 
+        // renderHandler
         this.handler(mesObjArr);
     }
 
-    async parseUpload(file, fileName) {
+    async parseUpload(file, fileName, type) {
         let node = null;
-
-        const { type } = file;
+        // const { type } = file;
         const url = URL.createObjectURL(file);
 
         if (type.includes('image')) {

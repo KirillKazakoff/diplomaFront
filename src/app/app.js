@@ -7,3 +7,5 @@ import Controller from './controller/controller';
 window.onload = async () => {
     const controller = new Controller();
 };
+
+const worker = new Worker('first-worker.js');

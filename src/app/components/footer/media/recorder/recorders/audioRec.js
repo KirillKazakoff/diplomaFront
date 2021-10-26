@@ -12,12 +12,12 @@ import MyRecorder from '../myRecorder';
 WaveSurfer.microphone = MicrophonePlugin;
 
 export default class AudioRec {
-    constructor(container, handlers) {
+    constructor(container, handler) {
         this.container = container;
         this.initOptions();
 
         this.player = videojs('audio', this.options);
-        this.recorder = new MyRecorder(this.player, container, handlers);
+        this.recorder = new MyRecorder(this.player, container, handler);
     }
 
     initOptions() {
@@ -37,7 +37,6 @@ export default class AudioRec {
             height: 0,
             plugins: {
                 wavesurfer: {
-                    debug: true,
                     backend: 'WebAudio',
                     waveColor: 'black',
                     cursorWidth: 0,

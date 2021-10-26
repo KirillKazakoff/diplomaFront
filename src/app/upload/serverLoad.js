@@ -5,19 +5,19 @@ import MultipleUpload from './multipleUpload';
 import api from '../request/api';
 
 export default class ServerLoad {
-    constructor(handler) {
-        this.handler = handler;
-        this.downHandler = this.down();
-        this.load = new MultipleUpload(handler);
+    constructor(uploadAndRenderH) {
+        this.handler = uploadAndRenderH;
+        this.downloadH = this.downloadH();
+        this.load = new MultipleUpload(uploadAndRenderH);
 
         window.addEventListener('beforeunload', () => api.leave.sendLeaveSignal());
     }
 
-    down() {
+    downloadH() {
         return async (direction) => {
             const messagesData = await api.message.getFilesData();
             if (!messagesData) return;
-            console.log(messagesData);
+            // console.log(messagesData);
 
             const messages = [];
             for (const fileData of messagesData) {
