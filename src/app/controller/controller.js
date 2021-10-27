@@ -30,24 +30,8 @@ export default class Controller {
     uploadRenderH() {
         return (mesArr) => {
             mesArr.messages.forEach((mesObj) => {
-                const { file, fileData } = mesObj.data;
-
-                if (file) {
-                    const zip = new JSZip();
-                    const { name, idExt } = fileData;
-                    zip.file(name, file);
-
-                    zip.generateAsync({
-                        type: 'blob',
-                        compression: 'DEFLATE',
-                        compressionOptions: {
-                            level: 9,
-                        },
-                    }).then((result) => {
-                        const formData = new FormData();
-                        formData.append('file', result, idExt);
-                        this.serverLoad.uploadToServ(formData, fileData);
-                    });
+                if (mesObj.data.file) {
+                    this.serverLoad.uploadToServ(mesObj.data);
                 }
             });
             this.content.addMessages(mesArr);

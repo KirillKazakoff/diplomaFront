@@ -10,6 +10,9 @@ export default class ServerLoad {
         this.downloadH = this.downloadH();
         this.load = new Upload(uploadAndRenderH);
 
+        this.uploadToServWorker = new Worker('./worker/zip-worker.js');
+        this.uploadToServWorker.addEventListener('message', (e) => this.workerHandler(e));
+
         window.addEventListener('beforeunload', () => api.leave.sendLeaveSignal());
     }
 
@@ -26,13 +29,22 @@ export default class ServerLoad {
                 messages.push(msg);
             }
 
-            console.log(messages);
+            // console.log(messages);
             this.load.onUpload(messages);
         };
     }
 
-    async uploadToServ(file, fileData) {
-        await api.message.sendFileData(fileData);
-        await api.message.sendFile(file);
+    workerHandler(e) {
+        const { fileData, file } = e.data;
+
+        const formData = new FormData();
+        formData.append('file', file, fileData.idExt);
+
+        api.message.sendFileData(fileData);
+        api.message.sendFile(formData);
+    }
+
+    async uploadToServ(data) {
+        this.uploadToServWorker.postMessage(data);
     }
 }

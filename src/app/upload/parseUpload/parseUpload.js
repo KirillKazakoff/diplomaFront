@@ -28,6 +28,5 @@ export default async function parseUpload(file, fileName, type) {
         node = await audioUpload(url);
     }
 
-    console.log(node);
     return { node, url };
 }

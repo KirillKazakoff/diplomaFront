@@ -4,7 +4,7 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable class-methods-use-this */
 import { setData } from '../lib/utils';
-import unzip from './unzip/unzip';
+import unzip from './zip/unzip';
 import parseUpload from './parseUpload/parseUpload';
 
 export default class Upload {
@@ -50,7 +50,6 @@ export default class Upload {
             files = await unzip(input);
             mesObjArr.direction = 'toTop';
         } else {
-            // add uploadToServ handler
             files = [...target.files].map((file) => ({ file }));
             mesObjArr.direction = 'toBottom';
         }

@@ -1,7 +1,14 @@
-const path = require('path'); // Node.js модуль для разрешения путей файлов
+const path = require('path');
+const glob = require('glob');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyPlugin = require("copy-webpack-plugin");
+
+const PurgecssPlugin = require('purgecss-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
+const PATHS = {
+    src: path.join(__dirname, 'src')
+}
 
 module.exports = {
     target: 'web',
@@ -77,11 +84,16 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: '[name].css',
         }),
+        // new PurgecssPlugin({
+        //     paths: glob.sync(`${PATHS.src}/**/*`, { nodir: true }),
+        // }),
 
         new CopyPlugin({
             patterns: [
                 { from: "src/img/srcImg", to: "img" },
-                // { from: "src/jsZipUtils.js", to: "./"},
+                { from: "node_modules/jszip/dist/jszip.js", to: "worker"},
+                { from: "src/app/upload/zip/zip-worker.js", to: "worker" },
+
             ],
         }),
     ],
