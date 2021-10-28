@@ -6,6 +6,8 @@ import api from '../request/api';
 
 export default class ServerLoad {
     constructor(uploadAndRenderH) {
+        this.lostConection = false;
+
         this.handler = uploadAndRenderH;
         this.downloadH = this.downloadH();
         this.load = new Upload(uploadAndRenderH);
@@ -18,7 +20,20 @@ export default class ServerLoad {
 
     downloadH() {
         return async (direction) => {
-            const messagesData = await api.message.getFilesData();
+            console.log('hello');
+            console.log(this.lostConection);
+            if (this.lostConection) return;
+
+            let messagesData = null;
+            const cache = await api.message.getAllFilesData();
+
+            try {
+                messagesData = await api.message.getFilesData();
+            } catch (e) {
+                messagesData = cache;
+                this.lostConection = true;
+            }
+
             if (!messagesData) return;
 
             const messages = [];

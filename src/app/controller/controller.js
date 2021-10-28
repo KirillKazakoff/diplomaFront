@@ -1,7 +1,5 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable class-methods-use-this */
-import JSZip from 'jszip';
-
 import Content from '../components/content/content';
 import Header from '../components/header/header';
 import Footer from '../components/footer/footer';

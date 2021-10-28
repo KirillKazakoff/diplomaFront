@@ -1,7 +1,5 @@
 /* eslint-disable no-await-in-loop */
 /* eslint-disable no-restricted-syntax */
-/* eslint-disable object-curly-newline */
-/* eslint-disable no-param-reassign */
 /* eslint-disable class-methods-use-this */
 import { setData } from '../lib/utils';
 import unzip from './zip/unzip';
@@ -76,33 +74,4 @@ export default class Upload {
 
         this.handler(mesObjArr);
     }
-
-    // async parseUpload(file, fileName, type) {
-    //     let node = null;
-    //     // const { type } = file;
-    //     const url = URL.createObjectURL(file);
-
-    //     if (type.includes('image')) {
-    //         node = await imgUpload(url);
-    //     }
-
-    //     if ((type.includes('json') || type.includes('text') || type.includes('java'))
-    //         && (!fileName.includes('user'))) {
-    //         node = docUpload();
-    //     }
-
-    //     if (fileName.includes('user')) {
-    //         node = await userTxtUpload(file);
-    //     }
-
-    //     if (type.includes('video')) {
-    //         node = await videoUpload(url);
-    //     }
-
-    //     if (type.includes('audio')) {
-    //         node = await audioUpload(url);
-    //     }
-
-    //     return { node, url };
-    // }
 }

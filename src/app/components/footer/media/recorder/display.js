@@ -24,9 +24,7 @@ export default class Display {
 
         if (!this.recIndicator) {
             this.pluginDisplay.classList.remove('vjs-controls-disabled');
-            console.log(this.pluginDisplay);
             this.recIndicator = this.pluginDisplay.querySelector('.vjs-record-indicator');
-            // this.pluginDisplay.classList.add('vjs-controls-disabled');
         }
         this.showRecIndicator();
     }
