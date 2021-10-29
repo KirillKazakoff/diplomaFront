@@ -12,7 +12,7 @@ export default async function parseUpload(file, fileName, type) {
         node = await imgUpload(url);
     }
 
-    if ((checkType(type, 'text')) && (!fileName.includes('user'))) {
+    if ((checkType(type, 'doc')) && (!fileName.includes('user'))) {
         node = docUpload();
     }
 

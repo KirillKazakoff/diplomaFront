@@ -17,12 +17,31 @@ self.addEventListener('activate', (event) => {
     console.log('Активирован');
 });
 
-async function cachePriorityStrategy(event) {
-    const cacheResponse = await caches.match(event.request);
-    // if request url === getFilesData then ignore and getFetchResponse;
+async function httpPriorityStrategy(event, path) {
+    let fetchResponse;
+    try {
+        fetchResponse = await fetch(event.request);
+    } catch (e) {
+        console.log(e);
+    }
 
-    const url = new URL(event.request.url);
-    const path = url.pathname;
+    if (path.includes('send') || path.includes('leave')) {
+        return fetchResponse;
+    }
+
+    if (fetchResponse) {
+        const cache = await caches.open('v2');
+        cache.put(event.request, fetchResponse.clone());
+        return fetchResponse;
+    }
+
+    const cacheResponse = await caches.match(event.request);
+    return cacheResponse;
+}
+
+async function cachePriorityStrategy(event, path) {
+    // console.log(event.request);
+    const cacheResponse = await caches.match(event.request);
 
     if (cacheResponse) {
         return cacheResponse;
@@ -39,13 +58,13 @@ async function cachePriorityStrategy(event) {
 }
 
 self.addEventListener('fetch', async (event) => {
-    // console.log(event.request);
-    // console.log(path);
-    // console.log(url);
-    // if(path)
+    const url = new URL(event.request.url);
+    const path = url.pathname;
 
-    event.respondWith(
-        cachePriorityStrategy(event),
-    );
-    // console.log('Происходит запрос на сервер');
+    if (path.includes('bundle') || path.includes('send')) {
+        event.respondWith(httpPriorityStrategy(event, path));
+        return;
+    }
+
+    event.respondWith(cachePriorityStrategy(event, path));
 });

@@ -1,6 +1,6 @@
 const types = {
-    text: ['json', 'text', 'txt', 'java', 'md'],
-    pic: ['png', 'jpeg', 'img', 'image'],
+    doc: ['json', 'text', 'txt', 'java', 'md', 'text/javascript', 'js', 'application/zip', 'zip'],
+    pic: ['png', 'jpeg', 'img', 'image', 'image/png'],
     video: ['video', 'mp4', 'mkv', 'video/x-matroska;codecs=avc1,opus'],
     audio: ['audio', 'mp3', 'audio/mpeg'],
 };

@@ -20,8 +20,6 @@ export default class ServerLoad {
 
     downloadH() {
         return async (direction) => {
-            console.log('hello');
-            console.log(this.lostConection);
             if (this.lostConection) return;
 
             let messagesData = null;
