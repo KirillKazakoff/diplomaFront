@@ -3,7 +3,7 @@
 import Content from '../components/content/content';
 import Header from '../components/header/header';
 import Footer from '../components/footer/footer';
-import ServerLoad from '../upload/serverLoad';
+import ServerLoad from '../upload/serverLoad/serverLoad';
 
 export default class Controller {
     constructor() {

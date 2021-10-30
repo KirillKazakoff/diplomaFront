@@ -46,6 +46,9 @@ async function cachePriorityStrategy(event, path) {
     if (cacheResponse) {
         return cacheResponse;
     }
+    console.log(path);
+    // console.log(event.request);
+    // console.log(cacheResponse);
 
     const fetchResponse = await fetch(event.request);
     const cache = await caches.open('v2');
@@ -60,6 +63,9 @@ async function cachePriorityStrategy(event, path) {
 self.addEventListener('fetch', async (event) => {
     const url = new URL(event.request.url);
     const path = url.pathname;
+
+    // console.log(event.request);
+    // console.log(path);
 
     if (path.includes('bundle') || path.includes('send')) {
         event.respondWith(httpPriorityStrategy(event, path));

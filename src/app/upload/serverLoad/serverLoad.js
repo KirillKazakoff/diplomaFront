@@ -1,8 +1,8 @@
 /* eslint-disable no-await-in-loop */
 /* eslint-disable no-restricted-syntax */
 /* eslint-disable class-methods-use-this */
-import Upload from './upload';
-import api from '../request/api';
+import Upload from '../upload';
+import api from '../../request/api';
 
 export default class ServerLoad {
     constructor(uploadAndRenderH) {
@@ -28,6 +28,7 @@ export default class ServerLoad {
             try {
                 messagesData = await api.message.getFilesData();
             } catch (e) {
+                // showFallback();
                 messagesData = cache;
                 this.lostConection = true;
             }
