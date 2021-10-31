@@ -1,5 +1,6 @@
-What'sUp Bot
-Final Course Work
+# What'sUp Bot
+## Final Course Work
+
 'appveyour link'
 
 What'sUp Bot is the application which purpose is to store, send and record some user data. 
@@ -116,6 +117,9 @@ Architecture (backend) (sucks even more)
     The key idea there is to use koa-multer and koa-body middlewares on different routes. When it gets fileData then it uses koa-body and when it gets file itself then it uses koa-multer to put file in public directory. (Actually, the key idea there is just to take some code from lection and if it works then it's already cool)
 
 Plugins section
+    videoJs
+    jsZip
+    koa
 
 Installation
     If you want to run the application (you crazy or what) then you should separatelly load two git repos: this one (front) and this (back)(link). Then:

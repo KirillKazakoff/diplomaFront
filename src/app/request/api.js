@@ -26,8 +26,9 @@ class Api {
             },
         };
 
-        this.leave = {
+        this.utils = {
             sendLeaveSignal: () => this.post('/leave', 'true'),
+            checkConnection: () => this.get('/ping'),
         };
     }
 

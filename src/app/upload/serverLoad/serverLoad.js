@@ -3,9 +3,11 @@
 /* eslint-disable class-methods-use-this */
 import Upload from '../upload';
 import api from '../../request/api';
+import Fallback from './fallback';
 
 export default class ServerLoad {
     constructor(uploadAndRenderH) {
+        this.fallback = new Fallback();
         this.lostConection = false;
 
         this.handler = uploadAndRenderH;
@@ -15,7 +17,7 @@ export default class ServerLoad {
         this.uploadToServWorker = new Worker('./worker/zip-worker.js');
         this.uploadToServWorker.addEventListener('message', (e) => this.workerHandler(e));
 
-        window.addEventListener('beforeunload', () => api.leave.sendLeaveSignal());
+        window.addEventListener('beforeunload', () => api.utils.sendLeaveSignal());
     }
 
     downloadH() {
@@ -28,7 +30,6 @@ export default class ServerLoad {
             try {
                 messagesData = await api.message.getFilesData();
             } catch (e) {
-                // showFallback();
                 messagesData = cache;
                 this.lostConection = true;
             }

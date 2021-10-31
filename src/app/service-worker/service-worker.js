@@ -1,5 +1,6 @@
 /* eslint-disable arrow-body-style */
 /* eslint-disable no-restricted-globals */
+
 self.addEventListener('install', (event) => {
     caches.open('v2').then((cache) => {
         cache.addAll([
@@ -25,7 +26,7 @@ async function httpPriorityStrategy(event, path) {
         console.log(e);
     }
 
-    if (path.includes('send') || path.includes('leave')) {
+    if (path.includes('send') || path.includes('leave') || path.includes('ping')) {
         return fetchResponse;
     }
 
@@ -40,15 +41,11 @@ async function httpPriorityStrategy(event, path) {
 }
 
 async function cachePriorityStrategy(event, path) {
-    // console.log(event.request);
     const cacheResponse = await caches.match(event.request);
 
     if (cacheResponse) {
         return cacheResponse;
     }
-    console.log(path);
-    // console.log(event.request);
-    // console.log(cacheResponse);
 
     const fetchResponse = await fetch(event.request);
     const cache = await caches.open('v2');
@@ -64,10 +61,9 @@ self.addEventListener('fetch', async (event) => {
     const url = new URL(event.request.url);
     const path = url.pathname;
 
-    // console.log(event.request);
-    // console.log(path);
-
-    if (path.includes('bundle') || path.includes('send')) {
+    if (path.includes('bundle') || path.includes('send') || path.includes('ping')
+    || event.request.destination === 'document' || path.includes('css')
+    || path.includes('getAllFilesData')) {
         event.respondWith(httpPriorityStrategy(event, path));
         return;
     }
