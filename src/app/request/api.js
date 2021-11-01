@@ -70,7 +70,8 @@ class Api {
     }
 }
 
-const api = new Api('http://localhost:9091');
+// const api = new Api('http://localhost:9091');
+const api = new Api('https://whats-up-bot-diploma.herokuapp.com');
 export default api;
 
 // getImg: async () => {

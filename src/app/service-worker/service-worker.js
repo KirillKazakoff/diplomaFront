@@ -50,6 +50,7 @@ async function cachePriorityStrategy(event, path) {
     const fetchResponse = await fetch(event.request);
     const cache = await caches.open('v2');
 
+    console.log(path);
     if (!path.includes('getFilesData')) {
         cache.put(event.request, fetchResponse.clone());
     }
@@ -63,7 +64,7 @@ self.addEventListener('fetch', async (event) => {
 
     if (path.includes('bundle') || path.includes('send') || path.includes('ping')
     || event.request.destination === 'document' || path.includes('css')
-    || path.includes('getAllFilesData')) {
+    || path.includes('getAllFilesData') || path.includes('leave')) {
         event.respondWith(httpPriorityStrategy(event, path));
         return;
     }
