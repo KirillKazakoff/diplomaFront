@@ -67,8 +67,13 @@ export default class Upload {
                 type = file.file.type;
             }
             const mesObj = await parseUpload(file.file, name, type);
+            if (!mesObj.node) {
+                console.error('parseError');
+                return;
+            }
 
             mesObj.data = fileData ? { fileData } : setData(file.file);
+            // console.log(mesObj);
             mesObjArr.messages.push(mesObj);
         }
 

@@ -24,8 +24,10 @@ export default class ServerLoad {
         return async (direction) => {
             if (this.lostConection) return;
 
+            // console.log('hello');
             let messagesData = null;
             const cache = await api.message.getAllFilesData();
+            // console.log(await api.message.getFilesData());
 
             try {
                 messagesData = await api.message.getFilesData();
@@ -34,6 +36,7 @@ export default class ServerLoad {
                 this.lostConection = true;
             }
 
+            // console.log(messagesData);
             if (!messagesData) return;
 
             const messages = [];
@@ -44,7 +47,7 @@ export default class ServerLoad {
                 messages.push(msg);
             }
 
-            // console.log(messages);
+            console.log(messages);
             this.load.onUpload(messages);
         };
     }
