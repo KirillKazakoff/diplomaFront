@@ -4,7 +4,7 @@ import engine from '../../../lib/engine/engine';
 
 function setLinksInText(txt) {
     let text = txt;
-    const regExp = /https:\/\/\w*|http:\/\/\w*/g;
+    const regExp = /https:\/\/[\w./]*|http:\/\/[\w./]*/g;
     const linkMatches = txt.match(regExp);
 
     if (linkMatches) {

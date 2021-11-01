@@ -1,5 +1,5 @@
 const types = {
-    doc: ['json', 'text', 'txt', 'java', 'md', 'text/javascript', 'js', 'application/zip', 'zip'],
+    doc: ['json', 'text/plain', 'txt', 'java', 'md', 'text/javascript', 'js', 'application/zip', 'zip', 'application/json'],
     pic: ['png', 'jpeg', 'img', 'image', 'image/png'],
     video: ['video', 'mp4', 'mkv', 'video/x-matroska;codecs=avc1,opus'],
     audio: ['audio', 'mp3', 'audio/mpeg'],
