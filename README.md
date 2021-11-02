@@ -16,8 +16,8 @@
   
 [![Build status](https://ci.appveyor.com/api/projects/status/i6u0692t36derfbt?svg=true)](https://ci.appveyor.com/project/KirillKazakoff/diplomafront)
 
-<p>What'sUp Bot is the application which purpose is
- to store, send and record some user data.</p> 
+What'sUp Bot is the application which purpose is
+to store, send and record some user data. Link on [GitHubPages][gitPages]
 
 ## Features
 - Key Features      
@@ -188,6 +188,7 @@ Then:
 
 <!-- Links in text -->
 [this]: <https://github.com/KirillKazakoff/diplomaBack>
+[gitPages]: <https://kirillkazakoff.github.io/diplomaFront>
 
 [SendFilesGif]: ./assets/SendFiles.gif
 [UserInputGif]: ./assets/UserInput.gif
