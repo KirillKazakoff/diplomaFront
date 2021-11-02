@@ -11,6 +11,7 @@
     - [**Aux Features**](#aux-features)
   - [Architecture](#architecture)
   - [Plugins](#plugins)
+  - [Loading](#loading)
   - [Installation](#installation)
   
 [![Build status](https://ci.appveyor.com/api/projects/status/i6u0692t36derfbt?svg=true)](https://ci.appveyor.com/project/KirillKazakoff/diplomafront)
@@ -150,6 +151,11 @@ PS: A lot of features huh :) but in fact it's still a useless piece of s$$$. Any
 | VideoJs             | [plugins/videoJs/README.md][PlVideo]             |
 | VideoJs Record      | [plugins/videoJsRecord/README.md][PlVideoR]      |
 | jsZip               | [plugins/jsZip/README.md][PlJsZip]               |
+
+</br>
+
+## Loading
+You should wait about 20 sec before data will be loaded
 
 </br>
 
