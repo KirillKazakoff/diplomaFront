@@ -21,6 +21,11 @@ export default class Controller {
 
         this.container = document.querySelector('.chat');
         this.container.addEventListener('submit', (e) => this.onSubmit(e));
+
+        document.addEventListener('keydown', (e) => {
+            if (this.header.isFilter) return;
+            this.footer.sendTextMessage(e);
+        });
     }
 
     onSubmit(e) {
@@ -40,7 +45,6 @@ export default class Controller {
                 this.content.addMessages(mesArr);
             } else {
                 this.content.scroll.block = true;
-                console.log('yes filter');
                 this.content.filterMessages(mesArr);
             }
         };

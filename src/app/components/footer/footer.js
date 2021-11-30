@@ -16,7 +16,6 @@ export default class Footer {
         this.media = new Media(this.container, loadHandler, mediaHandler);
 
         this.mesInput = this.container.querySelector('.input__message');
-        document.addEventListener('keydown', (e) => this.sendTextMessage(e));
     }
 
     sendTextMessage(e) {
