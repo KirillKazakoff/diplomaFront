@@ -20,6 +20,10 @@ class Api {
                 const res = await this.get('/message/getAllFilesData');
                 return res.json();
             },
+            getFilesDataFiltered: async (filter) => {
+                const res = await this.get(`/message/getFilesDataFiltered/${filter}`);
+                return res.json();
+            },
             getFile: async (id) => {
                 const res = await this.get(`/${id}`);
                 return res.blob();

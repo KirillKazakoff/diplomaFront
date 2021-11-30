@@ -52,7 +52,10 @@ export default class Upload {
             mesObjArr.direction = 'toBottom';
         }
 
-        if (files.length === 0) return;
+        if (files.length === 0) {
+            this.handler(false);
+            return;
+        }
 
         for (const file of files) {
             const { fileData } = file;

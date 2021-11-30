@@ -36,6 +36,7 @@
 }
 
 .header-badge__search {
+    cursor: pointer;
     background-image: url('./img/search-badge.png');
 }
 

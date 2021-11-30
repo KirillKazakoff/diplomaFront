@@ -14,7 +14,9 @@ export default class Controller {
         const { downloadOnScrollH, downloadOnFilterH } = this.serverLoad;
 
         this.content = new Content(uploadH, downloadOnScrollH);
-        this.header = new Header(uploadH, downloadOnFilterH);
+
+        this.cancelFilterH = this.content.cancelFilter();
+        this.header = new Header(uploadH, downloadOnFilterH, this.cancelFilterH);
         this.footer = new Footer(uploadH);
 
         this.container = document.querySelector('.chat');
@@ -27,12 +29,20 @@ export default class Controller {
 
     uploadRenderH() {
         return (mesArr) => {
-            mesArr.messages.forEach((mesObj) => {
-                if (mesObj.data.file) {
-                    this.serverLoad.uploadToServ(mesObj.data);
-                }
-            });
-            this.content.addMessages(mesArr);
+            if (!this.header.isFilter) {
+                if (!mesArr) return;
+
+                mesArr.messages.forEach((mesObj) => {
+                    if (mesObj.data.file) {
+                        this.serverLoad.uploadToServ(mesObj.data);
+                    }
+                });
+                this.content.addMessages(mesArr);
+            } else {
+                this.content.scroll.block = true;
+                console.log('yes filter');
+                this.content.filterMessages(mesArr);
+            }
         };
     }
 }

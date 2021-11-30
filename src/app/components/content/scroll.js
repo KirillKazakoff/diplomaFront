@@ -4,6 +4,7 @@
 
 export default class Scroll {
     constructor(container, downloadOnScrollH) {
+        this.block = false;
         this.downloadOnScrollH = downloadOnScrollH;
         this.container = container;
 
@@ -20,6 +21,8 @@ export default class Scroll {
     }
 
     async onScroll() {
+        if (this.block) return;
+
         const { scrollTop } = this.container;
 
         if (scrollTop === 0) {

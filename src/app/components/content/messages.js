@@ -1,11 +1,14 @@
 export default class Messages {
     constructor(container) {
+        this.isHidden = false;
         this.container = container;
+        this.msgContainer = container.querySelector('.messages');
+        this.messages = [];
         this.refresh();
     }
 
     refresh() {
-        this.messages = [...this.container.children];
+        this.messages = [...this.msgContainer.children];
     }
 
     initLinks(messagesData) {
@@ -22,4 +25,25 @@ export default class Messages {
     getMessage(id) {
         return this.messages.find((msg) => msg.id === id);
     }
+
+    hideMessages() {
+        if (!this.isHidden) {
+            this.messages.forEach((msg) => {
+                msg.classList.add('hidden');
+            });
+        }
+        this.hiddenMessages = [...this.messages];
+        this.isHidden = true;
+    }
+
+    // returnMessages() {
+    //     return () => {
+    //         if (this.isHidden) {
+    //             this.messages.forEach((msg) => msg.remove());
+    //             this.messages = this.hiddenMessages;
+    //             this.messages.forEach((msg) => msg.classList.remove('hidden'));
+    //         }
+    //         this.isHidden = false;
+    //     };
+    // }
 }

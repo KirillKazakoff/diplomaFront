@@ -42,8 +42,8 @@ export default class ServerLoad {
     }
 
     downloadOnFilterH() {
-        return async (direction) => {
-            const messagesData = await api.message.getFilesDataFiltered();
+        return async (direction, filter) => {
+            const messagesData = await api.message.getFilesDataFiltered(filter);
             if (!messagesData) return;
 
             this.load(messagesData, direction);

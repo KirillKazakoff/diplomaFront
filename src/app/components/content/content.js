@@ -14,29 +14,64 @@ import Messages from './messages';
 export default class Content {
     constructor(uploadHandler, downloadOnScrollH) {
         this.container = document.querySelector('.chat-content');
-        this.messages = new Messages(this.container.querySelector('.messages'));
+        this.messages = new Messages(this.container.querySelector('.messages-container'));
 
         this.scroll = new Scroll(this.messages.container, downloadOnScrollH);
         this.upload = new Upload(uploadHandler, null, this.container);
+        this.isFilter = false;
     }
 
-    addMessages(mesArrObj) {
-        this.scroll.getOldScroll();
-
+    getHTML(mesArrObj) {
         const totalHtml = mesArrObj.messages.reduce((total, msg) => {
             total += engine(noteT(msg));
             return total;
         }, '');
 
+        return totalHtml;
+    }
+
+    addMessages(mesArrObj) {
+        this.scroll.getOldScroll();
+
+        const totalHtml = this.getHTML(mesArrObj);
+
         if (mesArrObj.direction === 'toTop') {
-            this.messages.container.insertAdjacentHTML('afterbegin', totalHtml);
+            this.messages.msgContainer.insertAdjacentHTML('afterbegin', totalHtml);
             this.scroll.changeScroll();
         } else {
-            this.scroll.emptyScroll.insertAdjacentHTML('beforebegin', totalHtml);
+            this.messages.msgContainer.insertAdjacentHTML('beforeend', totalHtml);
             this.scroll.toEnd();
         }
 
         this.messages.refresh();
         this.messages.initLinks(mesArrObj.messages);
+    }
+
+    filterMessages(mesArrObj) {
+        if (!this.isFilter) {
+            this.msgStore = this.messages.msgContainer.innerHTML;
+            this.isFilter = true;
+        }
+
+        let totalHtml = '';
+        if (mesArrObj) {
+            totalHtml = this.getHTML(mesArrObj);
+        }
+
+        this.messages.msgContainer.innerHTML = totalHtml;
+
+        this.messages.refresh();
+        if (totalHtml) this.messages.initLinks(mesArrObj.messages);
+    }
+
+    cancelFilter() {
+        return () => {
+            if (this.isFilter) {
+                this.messages.msgContainer.innerHTML = this.msgStore;
+                this.isFilter = false;
+                this.scroll.block = false;
+                this.messages.refresh();
+            }
+        };
     }
 }
