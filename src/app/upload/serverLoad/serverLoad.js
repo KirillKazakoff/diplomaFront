@@ -10,9 +10,10 @@ export default class ServerLoad {
         this.fallback = new Fallback();
         this.lostConection = false;
 
-        this.handler = uploadAndRenderH;
-        this.downloadH = this.downloadH();
-        this.load = new Upload(uploadAndRenderH);
+        this.downloadOnScrollH = this.downloadOnScrollH();
+        this.downloadOnFilterH = this.downloadOnFilterH();
+
+        this.loader = new Upload(uploadAndRenderH);
 
         this.uploadToServWorker = new Worker('./worker/zip-worker.js');
         this.uploadToServWorker.addEventListener('message', (e) => this.workerHandler(e));
@@ -20,14 +21,12 @@ export default class ServerLoad {
         window.addEventListener('beforeunload', () => api.utils.sendLeaveSignal());
     }
 
-    downloadH() {
+    downloadOnScrollH() {
         return async (direction) => {
             if (this.lostConection) return;
 
-            // console.log('hello');
             let messagesData = null;
             const cache = await api.message.getAllFilesData();
-            // console.log(await api.message.getFilesData());
 
             try {
                 messagesData = await api.message.getFilesData();
@@ -36,20 +35,33 @@ export default class ServerLoad {
                 this.lostConection = true;
             }
 
-            // console.log(messagesData);
             if (!messagesData) return;
 
-            const messages = [];
-            for (const fileData of messagesData) {
-                const file = await api.message.getFile(fileData.idExt);
-                const msg = { fileData, file, direction };
-
-                messages.push(msg);
-            }
-
-            console.log(messages);
-            this.load.onUpload(messages);
+            this.load(messagesData, direction);
         };
+    }
+
+    downloadOnFilterH() {
+        return async (direction) => {
+            const messagesData = await api.message.getFilesDataFiltered();
+            if (!messagesData) return;
+
+            this.load(messagesData, direction);
+        };
+    }
+
+    async load(messagesData, direction) {
+        const messages = [];
+
+        for (const fileData of messagesData) {
+            const file = await api.message.getFile(fileData.idExt);
+            const msg = { fileData, file, direction };
+
+            messages.push(msg);
+        }
+
+        console.log(messages);
+        this.loader.onUpload(messages);
     }
 
     workerHandler(e) {

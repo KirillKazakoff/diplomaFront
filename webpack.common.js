@@ -1,14 +1,14 @@
 const path = require('path');
 const glob = require('glob');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CopyPlugin = require("copy-webpack-plugin");
+const CopyPlugin = require('copy-webpack-plugin');
 
 const PurgecssPlugin = require('purgecss-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const PATHS = {
-    src: path.join(__dirname, 'src')
-}
+    src: path.join(__dirname, 'src'),
+};
 
 module.exports = {
     target: 'web',
@@ -20,11 +20,11 @@ module.exports = {
     },
 
     devServer: {
-        port: 9000,
+        port: 9001,
         contentBase: './',
         watchContentBase: true,
         publicPath: '/dist/',
-        clientLogLevel: "silent",
+        clientLogLevel: 'silent',
     },
     devtool: 'source-map',
 
@@ -32,9 +32,7 @@ module.exports = {
         rules: [
             {
                 test: /\.css$/,
-                use: [
-                    MiniCssExtractPlugin.loader, 'css-loader',
-                ],
+                use: [MiniCssExtractPlugin.loader, 'css-loader'],
             },
             {
                 test: /\.m?js$/,
@@ -71,8 +69,8 @@ module.exports = {
     resolve: {
         extensions: ['.tsx', '.ts', '.js'],
         fallback: {
-            'path': require.resolve('path-browserify'),
-        }
+            path: require.resolve('path-browserify'),
+        },
     },
 
     plugins: [
@@ -90,13 +88,12 @@ module.exports = {
 
         new CopyPlugin({
             patterns: [
-                { from: "src/img/srcImg", to: "img" },
-                { from: "node_modules/jszip/dist/jszip.js", to: "worker"},
-                { from: "src/app/upload/zip/zip-worker.js", to: "worker" },
-                { from: "src/app/service-worker/service-worker.js", to: "./" },
-                { from: "src/app/service-worker/pathTypes.js", to: "./"},
+                { from: 'src/img/srcImg', to: 'img' },
+                { from: 'node_modules/jszip/dist/jszip.js', to: 'worker' },
+                { from: 'src/app/upload/zip/zip-worker.js', to: 'worker' },
+                { from: 'src/app/service-worker/service-worker.js', to: './' },
+                { from: 'src/app/service-worker/pathTypes.js', to: './' },
             ],
         }),
     ],
-
 };

@@ -3,8 +3,8 @@
 /* eslint-disable no-use-before-define */
 
 export default class Scroll {
-    constructor(container, loadHandler) {
-        this.loadHandler = loadHandler;
+    constructor(container, downloadOnScrollH) {
+        this.downloadOnScrollH = downloadOnScrollH;
         this.container = container;
 
         this.setScrollOnPromise();
@@ -23,12 +23,12 @@ export default class Scroll {
         const { scrollTop } = this.container;
 
         if (scrollTop === 0) {
-            await this.loadHandler('toTop');
+            await this.downloadOnScrollH('toTop');
         }
     }
 
     async initLoad() {
-        await this.loadHandler('toBottom');
+        await this.downloadOnScrollH('toBottom');
 
         this.toEnd();
     }

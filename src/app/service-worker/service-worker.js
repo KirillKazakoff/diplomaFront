@@ -3,7 +3,7 @@
 
 self.addEventListener('install', (event) => {
     caches.open('v2').then((cache) => {
-        cache.addAll([
+        cache.add([
             './',
             './index.html',
             './main.css',
@@ -15,7 +15,7 @@ self.addEventListener('install', (event) => {
 });
 
 self.addEventListener('activate', (event) => {
-    console.log('Активирован');
+    // console.log('Активирован');
 });
 
 async function httpPriorityStrategy(event, path) {
@@ -23,7 +23,7 @@ async function httpPriorityStrategy(event, path) {
     try {
         fetchResponse = await fetch(event.request);
     } catch (e) {
-        console.log(e);
+        // console.log(e);
     }
 
     if (path.includes('send') || path.includes('leave') || path.includes('ping')) {
@@ -41,7 +41,7 @@ async function httpPriorityStrategy(event, path) {
 }
 
 async function cachePriorityStrategy(event, path) {
-    console.log(path);
+    // console.log(path);
     const cacheResponse = await caches.match(event.request);
 
     if (cacheResponse) {
@@ -62,9 +62,15 @@ self.addEventListener('fetch', async (event) => {
     const url = new URL(event.request.url);
     const path = url.pathname;
 
-    if (path.includes('bundle') || path.includes('send') || path.includes('ping')
-    || event.request.destination === 'document' || path.includes('css')
-    || path.includes('getAllFilesData') || path.includes('leave')) {
+    if (
+        path.includes('bundle')
+        || path.includes('send')
+        || path.includes('ping')
+        || event.request.destination === 'document'
+        || path.includes('css')
+        || path.includes('getAllFilesData')
+        || path.includes('leave')
+    ) {
         event.respondWith(httpPriorityStrategy(event, path));
         return;
     }

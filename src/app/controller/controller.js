@@ -7,15 +7,15 @@ import ServerLoad from '../upload/serverLoad/serverLoad';
 
 export default class Controller {
     constructor() {
-        const uploadAndRenderH = this.uploadRenderH();
+        const uploadH = this.uploadRenderH();
 
-        this.serverLoad = new ServerLoad(uploadAndRenderH);
+        this.serverLoad = new ServerLoad(uploadH);
 
-        const { downloadH } = this.serverLoad;
+        const { downloadOnScrollH, downloadOnFilterH } = this.serverLoad;
 
-        this.content = new Content(uploadAndRenderH, downloadH);
-        this.header = new Header(uploadAndRenderH);
-        this.footer = new Footer(uploadAndRenderH);
+        this.content = new Content(uploadH, downloadOnScrollH);
+        this.header = new Header(uploadH, downloadOnFilterH);
+        this.footer = new Footer(uploadH);
 
         this.container = document.querySelector('.chat');
         this.container.addEventListener('submit', (e) => this.onSubmit(e));

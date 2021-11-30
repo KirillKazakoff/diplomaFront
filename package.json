@@ -5,7 +5,9 @@
     "license": "ISC",
     "scripts": {
         "test": "jest --passWithNoTests",
+        "debug": "/Applications/Google\\ Chrome.app/Contents/MacOS/Google\\ Chrome --remote-debugging-port=9222 --user-data-dir=remote-debug-profile http://localhost:9001/dist/",
         "start": "webpack serve --config webpack.dev.js",
+        "startDev": "yarn debug & yarn start",
         "webpack": "webpack --mode production --config webpack.prod.js",
         "build": "yarn run webpack",
         "lint": "eslint ."

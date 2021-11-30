@@ -1,5 +1,5 @@
 .header {
-    height: 7%;
+    height: 8%;
     display: flex;
     align-items: center;
     background-color: gray;
@@ -39,6 +39,26 @@
     background-image: url('./img/search-badge.png');
 }
 
+.input__search {
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    position: absolute;
+    content: '';
+    left: 45%;
+    top: 100px;
+    z-index: 1000;
+    padding: 10px 15px;
+
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.input__search::placeholder {
+    color: red;
+    font-family: 'DeadBitch';
+}
+
 .header-badge__pin {
     cursor: pointer;
     background-image: url('./img/pin-badge.png');
@@ -46,9 +66,4 @@
 
 .header-badge__context-menu {
     background-image: url('./img/context-menu-badge.png');
-}
-
-.input {
-    position: absolute;
-    top: -10000px;
 }

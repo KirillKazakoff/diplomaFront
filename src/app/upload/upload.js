@@ -73,7 +73,6 @@ export default class Upload {
             }
 
             mesObj.data = fileData ? { fileData } : setData(file.file);
-            // console.log(mesObj);
             mesObjArr.messages.push(mesObj);
         }
 

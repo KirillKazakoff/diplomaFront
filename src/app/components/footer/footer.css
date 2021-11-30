@@ -73,9 +73,7 @@
     color: red;
 }
 
-.cancel-record__video {
-
-}
+.cancel-record__video {}
 
 .send-record {
     cursor: pointer;

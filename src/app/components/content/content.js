@@ -12,11 +12,11 @@ import Scroll from './scroll';
 import Messages from './messages';
 
 export default class Content {
-    constructor(uploadHandler, downloadHandler) {
+    constructor(uploadHandler, downloadOnScrollH) {
         this.container = document.querySelector('.chat-content');
         this.messages = new Messages(this.container.querySelector('.messages'));
 
-        this.scroll = new Scroll(this.messages.container, downloadHandler);
+        this.scroll = new Scroll(this.messages.container, downloadOnScrollH);
         this.upload = new Upload(uploadHandler, null, this.container);
     }
 
