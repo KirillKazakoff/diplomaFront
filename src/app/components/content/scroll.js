@@ -20,6 +20,12 @@ export default class Scroll {
         this.container.addEventListener('scroll', () => this.onScroll());
     }
 
+    setBlock() {
+        return () => {
+            this.block = true;
+        };
+    }
+
     async onScroll() {
         if (this.block) return;
 

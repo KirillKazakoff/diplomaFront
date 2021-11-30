@@ -2,9 +2,10 @@ import './header.css';
 import Upload from '../../upload/upload';
 
 export default class Header {
-    constructor(uploadH, downloadOnFilterH, cancelFilterH) {
+    constructor(uploadH, downloadOnFilterH, cancelFilterH, setScrollBlockH) {
         this.isFilter = false;
         this.cancelFilterH = cancelFilterH;
+        this.setScrollBlockH = setScrollBlockH;
 
         this.container = document.querySelector('.header');
         this.pinBtn = this.container.querySelector('.header-badge__pin');
@@ -21,6 +22,7 @@ export default class Header {
     }
 
     onSearch(e) {
+        this.setScrollBlockH();
         this.isFilter = !this.isFilter;
         this.searchInput.classList.toggle('hidden');
 
@@ -32,7 +34,6 @@ export default class Header {
 
         if (!value) {
             this.downloadOnFilterH('top', 'all');
-            // this.cancelFilterH();
             return;
         }
 

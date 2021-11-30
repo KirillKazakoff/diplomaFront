@@ -69,9 +69,9 @@ export default class Content {
             if (this.isFilter) {
                 this.messages.msgContainer.innerHTML = this.msgStore;
                 this.isFilter = false;
-                this.scroll.block = false;
                 this.messages.refresh();
             }
+            this.scroll.block = false;
         };
     }
 }

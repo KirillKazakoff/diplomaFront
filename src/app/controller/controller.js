@@ -15,8 +15,10 @@ export default class Controller {
 
         this.content = new Content(uploadH, downloadOnScrollH);
 
-        this.cancelFilterH = this.content.cancelFilter();
-        this.header = new Header(uploadH, downloadOnFilterH, this.cancelFilterH);
+        const cancelFilterH = this.content.cancelFilter();
+        const scrollBlockH = this.content.scroll.setBlock();
+
+        this.header = new Header(uploadH, downloadOnFilterH, cancelFilterH, scrollBlockH);
         this.footer = new Footer(uploadH);
 
         this.container = document.querySelector('.chat');
