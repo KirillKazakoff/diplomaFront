@@ -90,6 +90,10 @@ module.exports = {
             patterns: [
                 { from: 'src/img/srcImg', to: 'img' },
                 { from: 'node_modules/jszip/dist/jszip.js', to: 'worker' },
+                {
+                    from: 'node_modules/lamejs/worker-example/worker-realtime.js',
+                    to: 'worker',
+                },
                 { from: 'src/app/upload/zip/zip-worker.js', to: 'worker' },
                 { from: 'src/app/service-worker/service-worker.js', to: './' },
             ],

@@ -55,8 +55,7 @@ export default class AudioRec {
                     video: false,
                     maxLength: 5,
                     audioEngine: 'lamejs',
-                    audioWorkerURL:
-                        '../../../../../node_modules/lamejs/worker-example/worker-realtime.js',
+                    audioWorkerURL: './worker/worker-realtime.js',
                 },
             },
         };
