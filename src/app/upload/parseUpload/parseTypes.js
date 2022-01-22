@@ -13,7 +13,7 @@ const types = {
     ],
     pic: ['png', 'jpeg', 'img', 'image', 'image/png'],
     video: ['video', 'mp4', 'mkv', 'video/x-matroska;codecs=avc1,opus', 'video/mp4'],
-    audio: ['audio', 'mp3', 'audio/mpeg', 'audio/ogg'],
+    audio: ['audio', 'mp3', 'audio/mpeg', 'audio/ogg', 'oga'],
 };
 
 export default function checkType(checkable, param) {
