@@ -6,7 +6,7 @@ import Controller from './controller/controller';
 import registrateSW from './service-worker/registrateSW';
 
 window.onload = async () => {
-    registrateSW();
+    // registrateSW();
     const controller = new Controller();
 };
 
