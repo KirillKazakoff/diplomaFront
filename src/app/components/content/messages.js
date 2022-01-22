@@ -35,15 +35,4 @@ export default class Messages {
         this.hiddenMessages = [...this.messages];
         this.isHidden = true;
     }
-
-    // returnMessages() {
-    //     return () => {
-    //         if (this.isHidden) {
-    //             this.messages.forEach((msg) => msg.remove());
-    //             this.messages = this.hiddenMessages;
-    //             this.messages.forEach((msg) => msg.classList.remove('hidden'));
-    //         }
-    //         this.isHidden = false;
-    //     };
-    // }
 }
