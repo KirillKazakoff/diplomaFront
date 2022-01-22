@@ -1,0 +1,39 @@
+.loader {
+    width: 48px;
+    height: 48px;
+    background: rosybrown;
+    border-radius: 50%;
+    display: inline-block;
+    top: 48vh;
+    left: 50vw;
+    position: absolute;
+    animation: rotation 1s linear infinite;
+}
+
+.loader::after {
+    content: '';
+    position: absolute;
+    left: 6px;
+    top: 10px;
+    width: 12px;
+    height: 12px;
+    color: #FF3D00;
+    background: currentColor;
+    border-radius: 50%;
+    box-shadow: 25px 2px, 10px 22px;
+}
+
+
+.loader.hidden {
+    display: none;
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

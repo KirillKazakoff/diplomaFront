@@ -1,6 +1,7 @@
 /* eslint-disable class-methods-use-this */
 /* eslint-disable no-unused-expressions */
 /* eslint-disable no-use-before-define */
+import loaderStatus from '../../upload/loaderStatus/LoaderStatus';
 
 export default class Scroll {
     constructor(container, downloadOnScrollH) {
@@ -37,8 +38,10 @@ export default class Scroll {
     }
 
     async initLoad() {
+        loaderStatus.showLoader();
         await this.downloadOnScrollH('toBottom');
 
+        loaderStatus.hideLoader();
         this.toEnd();
     }
 
