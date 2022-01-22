@@ -82,19 +82,11 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: '[name].css',
         }),
-        // new PurgecssPlugin({
-        //     paths: glob.sync(`${PATHS.src}/**/*`, { nodir: true }),
-        // }),
 
         new CopyPlugin({
             patterns: [
                 { from: 'src/img/srcImg', to: 'img' },
-                { from: 'node_modules/libvorbis.js/js/libvorbis.min.js', to: 'worker' },
                 { from: 'node_modules/jszip/dist/jszip.js', to: 'worker' },
-                {
-                    from: 'node_modules/lamejs/worker-example/worker-realtime.js',
-                    to: 'worker',
-                },
                 { from: 'src/app/upload/zip/zip-worker.js', to: 'worker' },
                 { from: 'src/app/service-worker/service-worker.js', to: './' },
             ],

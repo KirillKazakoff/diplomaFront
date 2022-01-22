@@ -12,8 +12,25 @@ const types = {
         'application/json',
     ],
     pic: ['png', 'jpeg', 'img', 'image', 'image/png'],
-    video: ['video', 'mp4', 'mkv', 'video/x-matroska;codecs=avc1,opus', 'video/mp4'],
-    audio: ['audio', 'mp3', 'audio/mpeg', 'audio/ogg', 'oga'],
+    video: [
+        'video',
+        'mp4',
+        'mkv',
+        'video/x-matroska;codecs=avc1,opus',
+        'video/mp4',
+        'video/webm',
+    ],
+    audio: [
+        'audio',
+        'mp3',
+        'audio/mpeg',
+        'audio/ogg',
+        'oga',
+        'audio/wav',
+        'wav',
+        'audio/webm;codecs=opus',
+        'webm',
+    ],
 };
 
 export default function checkType(checkable, param) {

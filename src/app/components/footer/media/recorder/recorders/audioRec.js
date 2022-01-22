@@ -2,16 +2,15 @@
 import WaveSurfer from 'wavesurfer.js';
 import MicrophonePlugin from 'wavesurfer.js/dist/plugin/wavesurfer.microphone';
 
-import Wavesurfer from 'videojs-wavesurfer/dist/videojs.wavesurfer.js';
+import 'videojs-wavesurfer/dist/videojs.wavesurfer';
 import videojs from 'video.js';
-import Record, { OPUSMEDIARECORDER } from 'videojs-record/dist/videojs.record.js';
-import LamejsEngine from 'videojs-record/dist/plugins/videojs.record.lamejs.js';
-import LibVorbisEngine from 'videojs-record/dist/plugins/videojs.record.libvorbis';
+import 'videojs-record/dist/videojs.record';
+
+import 'videojs-record/dist/plugins/videojs.record.libvorbis';
 
 import MyRecorder from '../myRecorder';
 
 WaveSurfer.microphone = MicrophonePlugin;
-window.MediaRecorder = OPUSMEDIARECORDER;
 
 export default class AudioRec {
     constructor(container, handler) {
@@ -56,8 +55,8 @@ export default class AudioRec {
                     audio: true,
                     video: false,
                     maxLength: 5,
-                    audioEngine: 'libvorbis.js',
-                    audioSampleRate: 32000,
+                    // audioEngine: 'libvorbis.js',
+                    // audioSampleRate: 32000,
                 },
             },
         };

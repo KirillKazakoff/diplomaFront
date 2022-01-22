@@ -1,4 +1,5 @@
 import videojs from 'video.js';
+import 'videojs-record/dist/videojs.record';
 import MyRecorder from '../myRecorder';
 
 export default class VideoRec {
