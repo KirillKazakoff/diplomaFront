@@ -12,10 +12,6 @@ export default async function parseUpload(file, fileName, type) {
     let node = null;
     const url = URL.createObjectURL(file);
 
-    if (checkType(type, 'audio')) {
-        node = await audioUpload(url);
-    }
-
     if (checkType(type, 'pic')) {
         node = await imgUpload(url);
     }
@@ -30,6 +26,10 @@ export default async function parseUpload(file, fileName, type) {
 
     if (checkType(type, 'video')) {
         node = await videoUpload(url);
+    }
+
+    if (checkType(type, 'audio')) {
+        node = await audioUpload(url);
     }
 
     return { node, url };

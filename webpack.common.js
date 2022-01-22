@@ -89,6 +89,7 @@ module.exports = {
         new CopyPlugin({
             patterns: [
                 { from: 'src/img/srcImg', to: 'img' },
+                { from: 'node_modules/libvorbis.js/js/libvorbis.min.js', to: 'worker' },
                 { from: 'node_modules/jszip/dist/jszip.js', to: 'worker' },
                 {
                     from: 'node_modules/lamejs/worker-example/worker-realtime.js',
