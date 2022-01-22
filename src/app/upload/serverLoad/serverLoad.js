@@ -37,7 +37,10 @@ export default class ServerLoad {
                 this.lostConection = true;
             }
 
-            if (!messagesData) return;
+            if (!messagesData) {
+                loaderStatus.hideLoader();
+                return;
+            }
 
             await this.load(messagesData, direction);
             loaderStatus.hideLoader();
