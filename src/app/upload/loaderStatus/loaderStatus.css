@@ -5,7 +5,7 @@
     border-radius: 50%;
     display: inline-block;
     top: 48vh;
-    left: 50vw;
+    left: 48vw;
     position: absolute;
     animation: rotation 1s linear infinite;
 }

@@ -4,6 +4,7 @@
 import Upload from '../upload';
 import api from '../../request/api';
 import Fallback from './fallback';
+import loaderStatus from '../loaderStatus/LoaderStatus';
 
 export default class ServerLoad {
     constructor(uploadAndRenderH) {
@@ -23,6 +24,7 @@ export default class ServerLoad {
 
     downloadOnScrollH() {
         return async (direction) => {
+            loaderStatus.showLoader();
             if (this.lostConection) return;
 
             let messagesData = null;
@@ -37,7 +39,8 @@ export default class ServerLoad {
 
             if (!messagesData) return;
 
-            this.load(messagesData, direction);
+            await this.load(messagesData, direction);
+            loaderStatus.hideLoader();
         };
     }
 
@@ -60,8 +63,7 @@ export default class ServerLoad {
             messages.push(msg);
         }
 
-        console.log(messages);
-        this.loader.onUpload(messages);
+        await this.loader.onUpload(messages);
     }
 
     workerHandler(e) {

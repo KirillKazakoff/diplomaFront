@@ -38,10 +38,8 @@ export default class Scroll {
     }
 
     async initLoad() {
-        loaderStatus.showLoader();
         await this.downloadOnScrollH('toBottom');
 
-        loaderStatus.hideLoader();
         this.toEnd();
     }
 
