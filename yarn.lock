@@ -2794,6 +2794,11 @@ destroy@^1.0.4, destroy@~1.0.4:
   resolved "https://registry.npmjs.org/destroy/-/destroy-1.0.4.tgz"
   integrity sha1-l4hXRCxEdJ5CBmE+N5RiBYJqvYA=
 
+detect-browser@^4.1.0:
+  version "4.8.0"
+  resolved "https://registry.yarnpkg.com/detect-browser/-/detect-browser-4.8.0.tgz#1d73bd88c17be866901950ce0aaae1ed060902c6"
+  integrity sha512-f4h2dFgzHUIpjpBLjhnDIteXv8VQiUm8XzAuzQtYUqECX/eKh67ykuiVoyb7Db7a0PUSmJa3OGXStG0CbQFUVw==
+
 detect-newline@^3.0.0:
   version "3.1.0"
   resolved "https://registry.npmjs.org/detect-newline/-/detect-newline-3.1.0.tgz"
@@ -3244,6 +3249,11 @@ etag@~1.8.1:
   version "1.8.1"
   resolved "https://registry.npmjs.org/etag/-/etag-1.8.1.tgz"
   integrity sha1-Qa4u62XvpiJorr/qg6x9eSmbCIc=
+
+event-target-shim@^3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/event-target-shim/-/event-target-shim-3.0.2.tgz#af25bb55a97c670bbeba985c82647fb64d892153"
+  integrity sha512-HK5GhnEAkm7fLy249GtF7DIuYmjLm85Ft6ssj7DhVl8Tx/z9+v0W6aiIVUdT4AXWGYy5Fc+s6gqBI49Bf0LejQ==
 
 eventemitter3@^4.0.0:
   version "4.0.7"
@@ -4079,6 +4089,11 @@ inherits@2.0.3:
   version "2.0.3"
   resolved "https://registry.npmjs.org/inherits/-/inherits-2.0.3.tgz"
   integrity sha1-Yzwsg+PaQqUC9SRmAiSA9CCCYd4=
+
+inline-worker@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/inline-worker/-/inline-worker-0.1.0.tgz#b290c336eb54a721ed3d22f72a2b9aacdf680e84"
+  integrity sha1-spDDNutUpyHtPSL3KiuarN9oDoQ=
 
 internal-ip@^4.3.0:
   version "4.3.0"
@@ -5123,6 +5138,11 @@ levn@~0.3.0:
     prelude-ls "~1.1.2"
     type-check "~0.3.2"
 
+libvorbis.js@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/libvorbis.js/-/libvorbis.js-1.1.2.tgz#6481fee8d9a62c90c7f8cd902ce2c7a26fe33265"
+  integrity sha1-ZIH+6NmmLJDH+M2QLOLHom/jMmU=
+
 lie@~3.3.0:
   version "3.3.0"
   resolved "https://registry.yarnpkg.com/lie/-/lie-3.3.0.tgz#dcf82dee545f46074daf200c7c1c5a08e0f40f6a"
@@ -5765,6 +5785,14 @@ optionator@^0.9.1:
     prelude-ls "^1.2.1"
     type-check "^0.4.0"
     word-wrap "^1.2.3"
+
+opus-media-recorder@^0.8.0:
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/opus-media-recorder/-/opus-media-recorder-0.8.0.tgz#fd60017e91ef82a5c03d4a31df63d358c1c62702"
+  integrity sha512-AIvJMpnJqZ18dFAU7Amtt5cZZp8oPzDoAOtobdTcLzwVNm/j815+GJmBupBzBZGBa4L940TEulm7Uu4tGOYDGQ==
+  dependencies:
+    detect-browser "^4.1.0"
+    event-target-shim "^3.0.2"
 
 original@^1.0.0:
   version "1.0.2"
@@ -6557,6 +6585,12 @@ rechoir@^0.7.0:
   integrity sha512-/njmZ8s1wVeR6pjTZ+0nCnv8SpZNRMT2D1RLOJQESlYFDBvwpTA4KWJpZ+sBJ4+vhjILRcK7JIFdGCdxEAAitg==
   dependencies:
     resolve "^1.9.0"
+
+"recorderjs@git+https://github.com/mattdiamond/Recorderjs.git":
+  version "0.1.0"
+  resolved "git+https://github.com/mattdiamond/Recorderjs.git#08e7abd99739be6946f19f6806ccb368138f2dd3"
+  dependencies:
+    inline-worker "^0.1.0"
 
 recordrtc@>=5.6.2, recordrtc@^5.6.2:
   version "5.6.2"
