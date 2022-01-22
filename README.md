@@ -33,7 +33,7 @@ to store, send and record some user data. Link on [GitHubPages][gitPages]
     - Recording media with videoJs plugin
     - Zip files when upload and unzip files on download from server  
     - ServiceWorker and WebWorker tech implementation
-    - Unavailable now: changing background and user avatar || searching by messages content
+    - Content filtration in header input
 
 ---
 ### **Key Features**
