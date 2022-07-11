@@ -11,7 +11,7 @@ const types = {
         'zip',
         'application/json',
     ],
-    pic: ['png', 'jpeg', 'img', 'image', 'image/png'],
+    pic: ['png', 'jpeg', 'img', 'image', 'image/png', 'image/jpeg'],
     video: [
         'video',
         'mp4',
