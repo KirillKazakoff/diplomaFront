@@ -133,7 +133,7 @@ PS: A lot of features huh :) but in fact it's still a useless piece of s$$$. Any
     - **Routes:** interaction with client requests
     - **ServerApp:** app entry point, here starts serve
 
-        The key idea there is to use koa-multer and koa-body middlewares on different routes. When it gets fileData then it uses koa-body and when it gets file itself then it uses koa-multer to put file in public directory. (Actually, the key idea there is just to take some code from lection and if it works then it's already cool)
+        The key idea there is to use koa-multer and koa-body middlewares on different routes. When it gets fileData then it uses koa-body and when it gets file itself then it uses koa-multer to put file in public directory.
 
 </br>
 
