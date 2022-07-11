@@ -1,7 +1,7 @@
 # What'sUp Bot
-## Final Course Work
+## Final JS-Course Work
 - [What'sUp Bot](#whatsup-bot)
-  - [Final Course Work](#final-course-work)
+  - [Final JS-Course Work](#final-js-course-work)
   - [Features](#features)
     - [**Key Features**](#key-features)
     - [**Aux Features**](#aux-features)
@@ -54,7 +54,7 @@ to store, send and record some user data. Link on [GitHubPages][gitPages]
 
         </br>
 3. ### Send files with Drag and Drop or header button
-    - **How does it work:** </br> You cand drop files to the app either by drag and drop  or by button in header section: ![SendFilesGif]
+    - **How does it work:** </br> You cand drop files to the app either by drag and drop or by button in header section: ![SendFilesGif]
     - **Realization:** </br> Look at the [Architecture](#architecture)
 
         </br>
