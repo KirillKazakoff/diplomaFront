@@ -1,7 +1,3 @@
-
-
-<!-- ![JetBrains logo](https://upload.wikimedia.org/wikipedia/commons/1/1a/JetBrains_Logo_2016.svg "JetBrains")  -->
-
 # What'sUp Bot
 ## Final Course Work
 - [What'sUp Bot](#whatsup-bot)
@@ -104,7 +100,7 @@ to store, send and record some user data. Link on [GitHubPages][gitPages]
     - **How does it work:** </br> After the first reload app save cache and then in case if you don't have network connection you will get your previous sent files: ![ServiceWorkerGif]
     - **Realization:** </br> In case of lost connection client will send getAllFilesData request on server instead of ordinary getFilesData request. Then this request will be caught by ServiceWorker and it will take it's previous result from cache and send it back to the client side.
 
-        </br>
+    </br>
 
 ---
 
@@ -133,7 +129,7 @@ PS: A lot of features huh :) but in fact it's still a useless piece of s$$$. Any
     - **Routes:** interaction with client requests
     - **ServerApp:** app entry point, here starts serve
 
-        The key idea there is to use koa-multer and koa-body middlewares on different routes. When it gets fileData then it uses koa-body and when it gets file itself then it uses koa-multer to put file in public directory. (Actually, the key idea there is just to take some code from lection and if it works then it's already cool)
+        The key idea there is to use koa-multer and koa-body middlewares on different routes. When it gets fileData then it uses koa-body and when it gets file itself then it uses koa-multer to put file in public directory
 
 </br>
 
@@ -155,12 +151,12 @@ PS: A lot of features huh :) but in fact it's still a useless piece of s$$$. Any
 </br>
 
 ## Loading
-You should wait about 20 sec before data will be loaded
+You should wait about 20 sec before data will be loaded. You will be seing loader while data is loading
 
 </br>
 
 ## Installation
-If you want to run the application (you crazy or what) then you should separatelly load two git repos: this one (client side) and [this] (server side).
+If you want to run the application then you should separatelly load two git repos: this one (client side) and [this] (server side).
 After that you need to install dependencies (oh wow) in both projects:
 ```sh
 npm i

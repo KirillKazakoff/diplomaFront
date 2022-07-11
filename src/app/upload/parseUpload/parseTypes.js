@@ -19,6 +19,7 @@ const types = {
         'video/x-matroska;codecs=avc1,opus',
         'video/mp4',
         'video/webm',
+        'video/webm;codecs=vp8,opus',
     ],
     audio: [
         'audio',
