@@ -13,6 +13,7 @@ function setLinksInText(txt) {
             text = text.replace(link, linkHtml);
         });
     }
+    console.log('jh');
 
     return text;
 }

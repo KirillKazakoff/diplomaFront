@@ -1,14 +1,7 @@
 const path = require('path');
-const glob = require('glob');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
-
-const PurgecssPlugin = require('purgecss-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-
-const PATHS = {
-    src: path.join(__dirname, 'src'),
-};
 
 module.exports = {
     target: 'web',
@@ -20,11 +13,14 @@ module.exports = {
     },
 
     devServer: {
+        client: {
+            logging: 'none',
+        },
         port: 9001,
-        contentBase: './',
-        watchContentBase: true,
-        publicPath: '/dist/',
-        clientLogLevel: 'silent',
+        compress: true,
+        historyApiFallback: true,
+        https: false,
+        hot: true,
     },
     devtool: 'source-map',
 
@@ -45,29 +41,14 @@ module.exports = {
                 },
             },
             {
-                test: /\.tsx?$/,
-                exclude: /node_modules/,
-                use: {
-                    loader: 'ts-loader',
-                },
-            },
-            {
-                test: /\.(png|jpg|gif|ttf|ico)$/i,
-                use: [
-                    {
-                        loader: 'url-loader',
-                        options: {
-                            outputPath: 'img/',
-                            name: '[name].[ext]',
-                        },
-                    },
-                ],
+                test: /\.(png|jpg|gif|ttf|ico|svg)$/i,
+                type: 'asset/resource',
             },
         ],
     },
 
     resolve: {
-        extensions: ['.tsx', '.ts', '.js'],
+        extensions: ['.js'],
         fallback: {
             path: require.resolve('path-browserify'),
         },
