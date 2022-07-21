@@ -6,7 +6,7 @@
     "scripts": {
         "test": "jest --passWithNoTests",
         "start": "webpack-dev-server --mode development",
-        "build": "yarn run webpack --config webpack.new.js",
+        "build": "webpack --mode production",
         "lint": "eslint ."
     },
     "devDependencies": {
