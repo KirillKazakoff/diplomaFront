@@ -70,6 +70,7 @@ export default class ServerLoad {
     }
 
     workerHandler(e) {
+        console.log(e.data);
         const { fileData, file } = e.data;
 
         const formData = new FormData();

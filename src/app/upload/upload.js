@@ -71,11 +71,11 @@ export default class Upload {
             }
             const mesObj = await parseUpload(file.file, name, type);
             if (!mesObj.node) {
-                console.error('parseError');
+                console.error(`${type} parse error`);
                 return;
             }
 
-            mesObj.data = fileData ? { fileData } : setData(file.file);
+            mesObj.data = fileData ? { fileData } : setData(file.file, mesObj.type);
             mesObjArr.messages.push(mesObj);
         }
 

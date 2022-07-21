@@ -34,9 +34,11 @@ const types = {
     ],
 };
 
-export default function checkType(checkable, param) {
-    const typesArr = types[param];
-    if (!typesArr) return false;
-
-    return typesArr.some((type) => type === checkable);
+export default function transformType(type) {
+    return Object.keys(types).find((key) => {
+        const subtypes = types[key];
+        const match = subtypes.find((subtype) => subtype === type);
+        if (match) return key;
+        return false;
+    });
 }

@@ -6,17 +6,19 @@ import {
     docUpload,
 } from './handlers';
 
-import checkType from './parseTypes';
+import transformType from './parseTypes';
 
-export default async function parseUpload(file, fileName, type) {
+export default async function parseUpload(file, fileName, subtype) {
     let node = null;
     const url = URL.createObjectURL(file);
 
-    if (checkType(type, 'pic')) {
+    const type = transformType(subtype);
+
+    if (type === 'pic') {
         node = await imgUpload(url);
     }
 
-    if (checkType(type, 'doc') && !fileName.includes('user')) {
+    if (type === 'doc' && !fileName.includes('user')) {
         node = docUpload();
     }
 
@@ -24,13 +26,13 @@ export default async function parseUpload(file, fileName, type) {
         node = await userTxtUpload(file);
     }
 
-    if (checkType(type, 'video')) {
+    if (type === 'video') {
         node = await videoUpload(url);
     }
 
-    if (checkType(type, 'audio')) {
+    if (type === 'audio') {
         node = await audioUpload(url);
     }
 
-    return { node, url };
+    return { node, url, type };
 }

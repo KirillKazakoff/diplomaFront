@@ -16,7 +16,7 @@ export function getRandomInt(min, max) {
     return Math.floor(Math.random() * (maxInt - minInt)) + minInt;
 }
 
-export function setData(blob) {
+export function setData(blob, type) {
     const id = nanoid(5);
     const idExt = `${id}.zip`;
 
@@ -24,7 +24,7 @@ export function setData(blob) {
     const { name } = blob;
 
     const data = {
-        fileData: { id, idExt, time, name },
+        fileData: { id, idExt, time, name, type },
         file: blob,
     };
 

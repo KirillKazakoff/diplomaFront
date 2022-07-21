@@ -40,6 +40,7 @@ export default class Controller {
                 if (!mesArr) return;
 
                 mesArr.messages.forEach((mesObj) => {
+                    console.log(mesObj);
                     if (mesObj.data.file) {
                         this.serverLoad.uploadToServ(mesObj.data);
                     }

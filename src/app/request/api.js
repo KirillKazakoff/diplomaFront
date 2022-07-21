@@ -77,8 +77,3 @@ class Api {
 const api = new Api('http://localhost:9092');
 // const api = new Api('https://whats-up-bot-diploma.herokuapp.com');
 export default api;
-
-// getImg: async () => {
-//     const res = await this.get('/Landscape - 757.mp4');
-//     return res.blob();
-// },
