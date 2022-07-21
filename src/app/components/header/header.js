@@ -21,7 +21,7 @@ export default class Header {
         this.pinBtn.addEventListener('click', (e) => this.upload.onClick(e));
     }
 
-    onSearch(e) {
+    onSearch() {
         this.setScrollBlockH();
         this.isFilter = !this.isFilter;
         this.searchInput.classList.toggle('hidden');
@@ -29,7 +29,7 @@ export default class Header {
         if (!this.isFilter) this.cancelFilterH();
     }
 
-    onInput(e) {
+    onInput() {
         const { value } = this.searchInput;
 
         if (!value) {
