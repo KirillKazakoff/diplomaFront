@@ -15,7 +15,7 @@ export default async function unzip(zippes) {
 
         const blob = await fileInZip.async('blob');
         zip.file = blob;
-        zip.fileData.type = path.extname(zip.fileData.name).substring(1);
+        // console.log(zip.fileData.type);
 
         files.push(zip);
     }

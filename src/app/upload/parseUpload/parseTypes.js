@@ -10,8 +10,9 @@ const types = {
         'application/zip',
         'zip',
         'application/json',
+        'doc',
     ],
-    pic: ['png', 'jpeg', 'img', 'image', 'image/png', 'image/jpeg'],
+    pic: ['png', 'jpeg', 'img', 'image', 'image/png', 'image/jpeg', 'pic'],
     video: [
         'video',
         'mp4',
