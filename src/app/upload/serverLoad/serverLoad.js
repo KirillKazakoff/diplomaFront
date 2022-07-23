@@ -5,6 +5,7 @@ import Upload from '../upload';
 import api from '../../request/api';
 import Fallback from './fallback';
 import loaderStatus from '../loaderStatus/LoaderStatus';
+import getCacheFiltered from './getCacheFiltered';
 
 export default class ServerLoad {
     constructor(uploadAndRenderH) {
@@ -29,8 +30,8 @@ export default class ServerLoad {
 
             let messagesData = null;
             const cache = await api.message.getAllFilesData();
-
             try {
+                await this.fallback.checkConnection();
                 messagesData = await api.message.getFilesData();
             } catch (e) {
                 messagesData = cache;
@@ -49,7 +50,15 @@ export default class ServerLoad {
 
     downloadOnFilterH() {
         return async (direction, filter) => {
-            const messagesData = await api.message.getFilesDataFiltered(filter);
+            let messagesData = null;
+            try {
+                await this.fallback.checkConnection();
+                messagesData = await api.message.getFilesDataFiltered(filter);
+            } catch (e) {
+                const cache = await api.message.getAllFilesData();
+                messagesData = getCacheFiltered(filter, cache);
+            }
+
             if (!messagesData) return;
 
             this.load(messagesData, direction);

@@ -69,7 +69,6 @@ export default class Upload {
                 name = file.file.name;
                 type = file.file.type;
             }
-            console.log(type);
             const mesObj = await parseUpload(file.file, name, type);
             if (!mesObj.node) {
                 throw new Error(`${type} parse error`);

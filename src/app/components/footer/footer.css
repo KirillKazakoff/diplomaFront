@@ -60,7 +60,7 @@
     align-items: center;
 }
 
-.recorder:nth-child(n+2) {
+.recorder:nth-child(n + 2) {
     margin-left: 50px;
 }
 
@@ -72,8 +72,6 @@
     cursor: pointer;
     color: red;
 }
-
-.cancel-record__video {}
 
 .send-record {
     cursor: pointer;
@@ -101,6 +99,8 @@
     left: 0;
     right: 0;
     bottom: 0;
+    max-width: 1200px;
+    margin-left: auto;
 }
 
 .controls__video {
@@ -115,19 +115,7 @@
     margin-left: auto;
 }
 
-/* #myVideoTimer {
-    z-index: 100;
-    position: absolute;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    width: 0px;
-    height: 0px;
-} */
-
 #video {
-    width: 100vw;
     height: 100vh;
 }
 

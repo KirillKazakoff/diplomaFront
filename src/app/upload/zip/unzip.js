@@ -1,7 +1,6 @@
 /* eslint-disable no-await-in-loop */
 /* eslint-disable no-restricted-syntax */
 import JSZip from 'jszip';
-import path from 'path';
 
 export default async function unzip(zippes) {
     const files = [];
@@ -15,7 +14,6 @@ export default async function unzip(zippes) {
 
         const blob = await fileInZip.async('blob');
         zip.file = blob;
-        // console.log(zip.fileData.type);
 
         files.push(zip);
     }

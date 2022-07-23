@@ -3,9 +3,7 @@ import api from '../../request/api';
 export default class Fallback {
     constructor() {
         this.container = document.body.querySelector('.fallback');
-
         this.pollServer();
-        this.wasConnection = true;
     }
 
     pollServer() {
@@ -17,10 +15,10 @@ export default class Fallback {
             await api.utils.checkConnection();
             this.hide();
         } catch (e) {
-            if (this.wasConnection) {
-                this.show();
-            }
+            this.show();
+            return false;
         }
+        return true;
     }
 
     hide() {

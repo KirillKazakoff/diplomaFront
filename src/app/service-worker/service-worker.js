@@ -23,7 +23,7 @@ async function httpPriorityStrategy(event, path) {
     try {
         fetchResponse = await fetch(event.request);
     } catch (e) {
-        // console.log(e);
+        console.log(e);
     }
 
     if (path.includes('send') || path.includes('leave') || path.includes('ping')) {
@@ -41,7 +41,6 @@ async function httpPriorityStrategy(event, path) {
 }
 
 async function cachePriorityStrategy(event, path) {
-    // console.log(path);
     const cacheResponse = await caches.match(event.request);
 
     if (cacheResponse) {
@@ -61,7 +60,6 @@ async function cachePriorityStrategy(event, path) {
 self.addEventListener('fetch', async (event) => {
     const url = new URL(event.request.url);
     const path = url.pathname;
-
     if (
         path.includes('bundle')
         || path.includes('send')
@@ -70,6 +68,7 @@ self.addEventListener('fetch', async (event) => {
         || path.includes('css')
         || path.includes('getAllFilesData')
         || path.includes('leave')
+        || path.includes('getFilesDataFiltered')
     ) {
         event.respondWith(httpPriorityStrategy(event, path));
         return;

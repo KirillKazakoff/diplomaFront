@@ -36,7 +36,7 @@ export default class Footer {
     prepareAndSend(tmp, param, file) {
         const mesObj = {
             node: template(tmp, param),
-            data: setData(file),
+            data: setData(file, 'doc'),
         };
 
         const mesArrObj = {
