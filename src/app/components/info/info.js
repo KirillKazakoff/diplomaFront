@@ -27,7 +27,7 @@ class Info {
         }
 
         const html = engine(infoT(this.icon, title, desc));
-        this.container.insertAdjacentHTML('afterbegin', html);
+        this.container.innerHTML = html;
         this.hideBtn = document.querySelector('.info-btn');
         this.hideBtn.addEventListener('click', this.hide);
     }
