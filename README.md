@@ -1,4 +1,7 @@
 # What'sUp Bot
+
+**Link on [GitHubPages][gitPages]**
+
 ## Final JS-Course Work
 - [What'sUp Bot](#whatsup-bot)
   - [Final JS-Course Work](#final-js-course-work)
@@ -13,7 +16,7 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/i6u0692t36derfbt?svg=true)](https://ci.appveyor.com/project/KirillKazakoff/diplomafront)
 
 What'sUp Bot is the application which purpose is
-to store, send and record some user data. Link on [GitHubPages][gitPages]
+to store, send and record some user data.
 
 ## Features
 - Key Features      
