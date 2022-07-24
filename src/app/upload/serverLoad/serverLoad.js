@@ -50,6 +50,7 @@ export default class ServerLoad {
 
     downloadOnFilterH() {
         return async (direction, filter) => {
+            loaderStatus.showLoader();
             let messagesData = null;
             try {
                 await this.fallback.checkConnection();
@@ -61,7 +62,8 @@ export default class ServerLoad {
 
             if (!messagesData) return;
 
-            this.load(messagesData, direction);
+            await this.load(messagesData, direction);
+            loaderStatus.hideLoader();
         };
     }
 
