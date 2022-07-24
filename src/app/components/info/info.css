@@ -1,9 +1,10 @@
 .info-wrapper {
+    background: rgba(50, 50, 50, 0.5);
     position: absolute;
     left: 0;
     right: 0;
-    top: 0;
-    bottom: 0;
+    top: 0px;
+    bottom: 0px;
     display: flex;
     justify-content: center;
     align-items: center;

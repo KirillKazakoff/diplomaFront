@@ -74,9 +74,9 @@ class Api {
     }
 }
 
-// const api = new Api('http://localhost:9092');
+const prodUrl = 'https://whats-up-bot-diploma.herokuapp.com';
+const devUrl = 'http://localhost:9092';
+const url = process.env.NODE_ENV === 'production' ? prodUrl : devUrl;
 
-console.log(process.env.NODE_ENV);
-
-const api = new Api('https://whats-up-bot-diploma.herokuapp.com');
+const api = new Api(url);
 export default api;

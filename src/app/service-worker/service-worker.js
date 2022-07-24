@@ -10,6 +10,7 @@ self.addEventListener('install', (event) => {
             './bundle.js',
             './img/backDefault.jpg',
             './img/userDefault.png',
+            './svg/exclamation.svg',
         ]);
     });
 });

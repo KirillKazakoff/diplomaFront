@@ -31,7 +31,7 @@
     background-size: cover;
 }
 
-.header-badge:nth-child(n+2) {
+.header-badge:nth-child(n + 2) {
     margin-left: 30px;
 }
 
@@ -58,6 +58,7 @@
 .input__search::placeholder {
     color: red;
     font-family: 'DeadBitch';
+    word-spacing: 20px;
 }
 
 .header-badge__pin {
