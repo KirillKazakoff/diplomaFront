@@ -1,5 +1,6 @@
 import './header.css';
 import Upload from '../../upload/upload';
+import info from '../info/info';
 
 export default class Header {
     constructor(uploadH, downloadOnFilterH, cancelFilterH, setScrollBlockH) {
@@ -22,6 +23,9 @@ export default class Header {
     }
 
     onSearch() {
+        if (!this.isFilter) {
+            info.renderInfo(info.messages.search.title, info.messages.search.desc);
+        }
         this.setScrollBlockH();
         this.isFilter = !this.isFilter;
         this.searchInput.classList.toggle('hidden');
