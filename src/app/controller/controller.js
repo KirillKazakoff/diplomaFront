@@ -4,9 +4,11 @@ import Content from '../components/content/content';
 import Header from '../components/header/header';
 import Footer from '../components/footer/footer';
 import ServerLoad from '../upload/serverLoad/serverLoad';
+import info from '../components/info/info';
 
 export default class Controller {
     constructor() {
+        // info.renderInfo('HELLoy', 'Gays');
         const uploadH = this.uploadRenderH();
 
         this.serverLoad = new ServerLoad(uploadH);

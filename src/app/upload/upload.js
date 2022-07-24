@@ -4,6 +4,7 @@
 import { setData } from '../lib/utils';
 import unzip from './zip/unzip';
 import parseUpload from './parseUpload/parseUpload';
+import info from '../components/info/info';
 
 export default class Upload {
     constructor(handler, input, container) {
@@ -71,6 +72,10 @@ export default class Upload {
             }
             const mesObj = await parseUpload(file.file, name, type);
             if (!mesObj.node) {
+                info.renderInfo(
+                    info.messages.typeLoadError.title,
+                    info.messages.typeLoadError.desc,
+                );
                 throw new Error(`${type} parse error`);
             }
 

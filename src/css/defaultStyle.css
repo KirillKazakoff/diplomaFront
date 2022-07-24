@@ -5,8 +5,20 @@
     box-sizing: border-box;
 }
 
-html, body, p, ul, figure, button,
-h1, h2, h3, h4, aside, select, textarea, input {
+html,
+body,
+p,
+ul,
+figure,
+button,
+h1,
+h2,
+h3,
+h4,
+aside,
+select,
+textarea,
+input {
     border: none;
     margin: 0;
     padding: 0;
@@ -15,18 +27,27 @@ h1, h2, h3, h4, aside, select, textarea, input {
     font-weight: normal;
 }
 
-input, button, video, audio {
+input,
+button,
+video,
+audio,
+button {
+    font-family: inherit;
     font-size: inherit;
     background-color: transparent;
     display: block;
 }
 
-select, textarea {
+select,
+textarea {
     -webkit-appearance: none;
     -moz-appearance: none;
 }
 
-select:focus, textarea:focus, button:focus, input:focus {
+select:focus,
+textarea:focus,
+button:focus,
+input:focus {
     outline: none;
 }
 

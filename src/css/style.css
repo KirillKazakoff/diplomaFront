@@ -12,3 +12,11 @@ h1 {
     position: absolute;
     top: -1000px;
 }
+
+.btn {
+    cursor: pointer;
+}
+
+:root {
+    --red: rgba(113, 24, 12, 1);
+}
