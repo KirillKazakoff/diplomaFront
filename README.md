@@ -86,7 +86,7 @@ to store, send and record some user data.
 2. ### Recording media with videoJs plugin
     - **How does it work:** </br> Each time when you click on a record button (video or audio) then it opens a recorder.
   
-      After that, you may choose whether you want to delete: ![CancelGif]
+      After that, you can choose whether you want to delete: ![CancelGif]
 
       Or send the record: ![SuccessGif]
       Each recorder has itself max record time. When time's up it just stops the record.
@@ -162,7 +162,7 @@ You should wait about 20 sec before data will be loaded. You will be seing loade
 If you want to run the application then you should separatelly load two git repos: this one (client side) and [this] (server side).
 After that you need to install dependencies (oh wow) in both projects:
 ```sh
-npm i
+yarn
 ```
 
 
@@ -170,15 +170,15 @@ Then:
 - In backend project you should start 'dev' script if you want to contribute.
     If you just want to run it then use 'start' script
     ```sh
-    npm run dev
-    npm run start
+    yarn dev
+    yarn start
     ``` 
 
 - In frontend project you just should use 'start' script. (but before you need to build project with webpack with 'build' command). 
 
   ```sh
-  npm run build
-  npm run start
+  yarn build
+  yarn start
   ```
 
 
