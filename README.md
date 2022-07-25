@@ -90,12 +90,12 @@ to store, send and record some user data.
 
       Or send the record: ![SuccessGif]
       Each recorder has itself max record time. When time's up it just stops the record.
-    - **Realization:** </br> There's being used videoJs(link) package with Record plugin(link). On the record click it starts recording at the same time. Each time when a record stops previous record instances are being deleted and new ones are being created.
+    - **Realization:** </br> There's being used [videoJs][PlVideo] package with [Record plugin][PlVideoR]. On the record click it starts recording at the same time. Each time when a record stops previous record instances are being deleted and new ones are being created.
     - **Why it's so silly (non-obligatory to read):** </br> It maybe a little bit confusing but because of lack of documentaion I've had no idea what to do and I had to came up with this trick. The problem is that when you click on video record button it works great. But when you click again then it isn't being refreshed, yet instead it remembers the previous video and the video timer is being hidden in result. 
 
        </br>
 3. ### Zip files when upload and unzip files on download from server:
-    - **Realization:** </br> There's being used jsZip package(link). </br>When user send data it is being zipped asynchronously in WebWorker and then sent to the server.
+    - **Realization:** </br> There's being used [jsZip package][PlJsZip]. </br>When user send data it is being zipped asynchronously in WebWorker and then sent to the server.
     When user get data from server then it is's being unzipped synchronously and then rendered. 
 
     </br>
