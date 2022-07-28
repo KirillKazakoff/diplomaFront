@@ -187,7 +187,7 @@ Then:
 
 <!-- Links in text -->
 [this]: <https://github.com/KirillKazakoff/diplomaBack>
-[gitPages]: <https://kirillkazakoff.github.io/diplomaFront>
+[gitPages]: <https://kirillkazakoff.github.io/diploma_JS_Main_Frontend/>
 
 [SendFilesGif]: ./assets/SendFiles.gif
 [UserInputGif]: ./assets/UserInput.gif
